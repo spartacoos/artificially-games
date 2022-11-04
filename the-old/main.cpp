@@ -2,17 +2,42 @@
 #define X_DIM 3
 #define Y_DIM 3
 
-std::bitset<9> WinStates[8] = {  //there are  8 different conditions that the board can be in where somebody has won
-  std::bitset<9>(std::string("100010001")), // diagonal #1
-  std::bitset<9>(std::string("100010001")), //
-  std::bitset<9>(std::string("100010001")),
-  std::bitset<9>(std::string("100010001")),
-  std::bitset<9>(std::string("100010001")),
-  std::bitset<9>(std::string("100010001")),
-  std::bitset<9>(std::string("100010001")),
-  std::bitset<9>(std::string("100010001")),
+/*
+** TODO:
+** 1. Add the rest of the rules to exhaustive check
+** 2. Make it possible to allow input from the user and keep playing until line
+** 3. Make dumbAssAI that simply makes a random move out of the possible ones
+** 4. Make an AI that looks ahead at the possible states recursively and picks best choice out of all possible states
+ */
 
+struct WinningStates {
+    std::bitset<9> bits{};
+    std::string name;
 };
+
+
+WinningStates WinStates[8] = {  //there are  8 different conditions that the board can be in where somebody has won
+    {std::bitset<9>(std::string("100010001")), std::string("diagonal (left-to-right) #1")},
+    {std::bitset<9>(std::string("100100100")), std::string("vertical col #1")},
+    {std::bitset<9>(std::string("010010010")), std::string("vertical col #2")},
+    {std::bitset<9>(std::string("001001001")), std::string("vertical col #3")},
+    {std::bitset<9>(std::string("111000000")), std::string("horizontal col #1")},
+    {std::bitset<9>(std::string("000111000")), std::string("horizontal col #2")},
+    {std::bitset<9>(std::string("000000111")), std::string("horizontal col #3")},
+    {std::bitset<9>(std::string("001010100")), std::string("diagonal (right-to-left) #2")}
+};
+
+// std::bitset<9> WinStates[8] = {  //there are  8 different conditions that the board can be in where somebody has won
+//   std::bitset<9>(std::string("100010001")), // diagonal (left-to-right) #1
+//   std::bitset<9>(std::string("100100100")), // vertical col #1
+//   std::bitset<9>(std::string("010010010")), // vertical col #2
+//   std::bitset<9>(std::string("001001001")), // vertical col #3
+//   std::bitset<9>(std::string("111000000")), // horizontal col #1
+//   std::bitset<9>(std::string("000111000")), // horizontal col #2
+//   std::bitset<9>(std::string("000000111")), // horizontal col #3
+//   std::bitset<9>(std::string("001010100")), // diagonal (right-to-left) #2
+
+// };
 
 enum class SquareState {
   Empty,
@@ -113,16 +138,17 @@ struct BoardState {
         // and then XOR-ing that with another binary number that contains the XOR sum of the rules??
             //vertical check
         std::bitset<9> serialized = serialize_board_state_for_player(player);
-        bool winner =
-            (serialized == WinStates[0])? true:
-            (serialized == WinStates[1])? true:
-            (serialized == WinStates[2])? true:
-            (serialized == WinStates[3])? true:
-            (serialized == WinStates[4])? true:
-            (serialized == WinStates[5])? true:
-            (serialized == WinStates[6])? true:
-            (serialized == WinStates[7])? true:
-            (serialized == WinStates[8])? true: false;
+        bool winner = (serialized == WinStates[0].bits)? {std::cout<< WinStates[0].name; return true;} : {std::cout<< WinStates[0].name; return true} ;
+        // bool winner =
+        //     (serialized == WinStates[0].bits)? true:
+        //     (serialized == WinStates[1].bits)? true:
+        //     (serialized == WinStates[2].bits)? true:
+        //     (serialized == WinStates[3].bits)? true:
+        //     (serialized == WinStates[4].bits)? true:
+        //     (serialized == WinStates[5].bits)? true:
+        //     (serialized == WinStates[6].bits)? true:
+        //     (serialized == WinStates[7].bits)? true:
+        //     (serialized == WinStates[8].bits)? true: false;
         std::cout << serialized << std::endl;
         return winner;
         }
