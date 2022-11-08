@@ -138,28 +138,22 @@ struct BoardState {
         // and then XOR-ing that with another binary number that contains the XOR sum of the rules??
             //vertical check
         std::bitset<9> serialized = serialize_board_state_for_player(player);
-        bool winner = (serialized == WinStates[0].bits)? {std::cout<< WinStates[0].name; return true;} : {std::cout<< WinStates[0].name; return true} ;
-        // bool winner =
-        //     (serialized == WinStates[0].bits)? true:
-        //     (serialized == WinStates[1].bits)? true:
-        //     (serialized == WinStates[2].bits)? true:
-        //     (serialized == WinStates[3].bits)? true:
-        //     (serialized == WinStates[4].bits)? true:
-        //     (serialized == WinStates[5].bits)? true:
-        //     (serialized == WinStates[6].bits)? true:
-        //     (serialized == WinStates[7].bits)? true:
-        //     (serialized == WinStates[8].bits)? true: false;
-        std::cout << serialized << std::endl;
-        return winner;
+        for(auto [state,name]:WinStates){
+            if(state==serialized) {
+                std::cout<< "rule: " << name << std::endl;
+                return true;
+            }
+        }
+        return false;
         }
 
 };
 
 auto main() -> int {
     BoardState board{};
-    board.grid[0][0] = SquareState::Circle;
+    board.grid[0][1] = SquareState::Circle;
     board.grid[1][1] = SquareState::Circle;
-    board.grid[2][2] = SquareState::Circle;
+    board.grid[2][1] = SquareState::Circle;
     board.grid[1][2] = SquareState::Cross;
     board.grid[1][0] = SquareState::Cross;
     board.print_board_state();
