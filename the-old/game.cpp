@@ -10,6 +10,7 @@
 #include <iostream>
 #include <regex>
 #include "doctest.h"
+// typedef unsigned long score;
 typedef int score;
 
 int non_exempt_bad_input(){
@@ -234,19 +235,31 @@ struct BoardState {
         }
         return positions;
     }
+
+    bool is_draw(){
+        if(is_full()){
+            if(!(exhaustive_check_for_winner(SquareState::Circle) || exhaustive_check_for_winner(SquareState::Cross))){
+                return true;
+            } else {
+                return false;
+            }
+        } else{
+            return false;
+        }
+    }
 };
 
 
 struct AI {
     AI(SquareState maximizing_player):maximizing_player{maximizing_player}{}
     ~AI()= default;
-    virtual Position next_move(BoardState &board)=0;
+    virtual Position next_move(BoardState board)=0;
     SquareState maximizing_player; //cross or circle
 };
 
 struct RandomMover: AI {
         RandomMover(SquareState maximizing_player) : AI(maximizing_player){}
-        Position next_move(BoardState &board){
+        Position next_move(BoardState board){
             //check if there are available squares on the board, if so, record their indices
         //     std::map<int,bool> available = {
         //     {},
@@ -284,100 +297,253 @@ struct RandomMover: AI {
 
 struct MiniMax: AI {
     MiniMax(SquareState maximizing_player) : AI(maximizing_player){}
-    Position next_move(BoardState &board){
-        int depth = (X_DIM * Y_DIM); //* 5;
-        return minimax(board, depth, true).pos;
-    }
-    Move minimax(BoardState &board, int depth, bool playing_as_maximizer){
+    Position next_move(BoardState board){
+        // might want to do a check to ensure there are possible moves left (i.e empty slots) otherwise best_move might contain garbage vallues, worry abt that later
+        int depth = 0;//BOARD_SIZE-1;//(X_DIM * Y_DIM); //* 5;
+        score best_score{INT_MIN};
+        //Possible moves
+        std::vector<Position> possible_moves = board.empty_slots();
+        // return minimax(board, depth, true).pos;
+        Position best_move{possible_moves[0].x,possible_moves[0].y};
+        //iterate over possible moves given board state (i.e playing as maximizing_player) then pick the one with higest score
+        for(auto move: possible_moves){
+            auto [x,y] = move;
+            BoardState child_board = board;
+            child_board.grid[x][y] = maximizing_player;
+            // std::cout << "Addr original: " << &board << "\n";
+            // std::cout << "Addr copy: " << &child_board<< "\n";
+            // exit(0);
+            // score curr_value = minimax(child_board, possible_moves.size() ,true);
+            score curr_value = minimax(child_board, depth,false);
+            if(curr_value > best_score){
+                best_score = curr_value;
+                best_move = {x,y};
+            }
+        }
 
-        // std::cout << "HEREEEEEE MA FRIEND : fullnesss::>> " << board.is_full();
-        if(depth==0 || board.is_full()){
-            return heuristic_score(board, maximizing_player);
+        // std::cout << "HERREEE: \n" << "score: " << best_score << "  |  move: {" << best_move.x << ", " << best_move.y << "} \n";
+        // exit(0);
+        // if(possible_moves.size()==8){
+        //     std::cout << best_move.x;
+        //     std::cout << "HERE\n";
+        //     exit(0);
+        // }
+        return best_move;
+    }
+    score minimax(BoardState board, unsigned int depth, bool playing_as_maximizer){
+        // if(depth==0 || board.is_full() || board.exhaustive_check_for_winner(SquareState::Circle) || board.exhaustive_check_for_winner(SquareState::Cross)){
+        //     // return heuristic(board,playing_as_maximizer);
+        //     return heuristic(board);
+        // }
+        score val = heuristic(board);
+        if(val == 10){
+            return 10-depth;
+        }
+        if(val == -10){
+            return -10+depth;
+        }
+
+        if(board.is_full()){
+            return 0;
         }
 
         if(playing_as_maximizer){
-            std::vector<std::tuple<score,unsigned long,unsigned long>> possible_positions{};
-            score value = INT_MIN;
-            for(auto empty_square: board.empty_slots()){
-                auto [x,y] = empty_square;
-                BoardState child_board = board; //need to make it deep copy semantics, currently only copies ref
-                child_board.grid[x][y] = SquareState::Circle;
-                value = std::max(value,minimax(child_board, depth-1, false).value);
-                possible_positions.push_back(std::make_tuple(value,x,y));
-            }
-            // Move m = {.value=value, .pos={.x=0, .y=0}};
-            // Find best position (i.e the x&y pair that yields highest value)
-            sort(possible_positions.begin(), possible_positions.end());
-            // int idx = possible_positions.size()-1;
-            int idx = 0;
-            Position best = {std::get<1>(possible_positions[idx]), std::get<2>(possible_positions[idx])};
-            std::cout << "Possible moves:  "<< possible_positions.size() << "\n";
-            std::cout << "LAST MOVE IN VECS OF MOVES \n";
-            std::cout << std::get<0>(possible_positions[possible_positions.size()-1])
-                      << ", " << std::get<1>(possible_positions[possible_positions.size()-1])
-                      << ", " << std::get<2>(possible_positions[possible_positions.size()-1]) << "\n";
-
-
-            std::cout << "FIRST MOVE IN VEC \n";
-            std::cout << std::get<0>(possible_positions[0])
-                      << ", " << std::get<1>(possible_positions[0])
-                      << ", " << std::get<2>(possible_positions[0]) << "\n";
-
-            // return {value, {.x=0, .y=0}};
-            return {value, best};
-        }else{
-            std::vector<std::tuple<score,unsigned long,unsigned long>> possible_positions{};
-            score value = INT_MAX;
-            for(auto empty_square: board.empty_slots()){
-                auto [x,y] = empty_square;
-                BoardState child_board = board; //need to make it deep copy semantics, currently only copies ref
-                child_board.grid[x][y] = SquareState::Cross;
-                value = std::min(value,minimax(child_board, depth-1, true).value);
-                possible_positions.push_back(std::make_tuple(value,x,y));
-            }
-            sort(possible_positions.begin(), possible_positions.end());
-            int idx = possible_positions.size()-1;
-            // int idx = 0;
-            Position best = {std::get<1>(possible_positions[idx]), std::get<2>(possible_positions[idx])};
-            return {value, best};
+           // score value = INT_MIN;
+           score value = -1000;
+           for(auto move: board.empty_slots()){
+               auto [x,y] = move;
+               BoardState child = board;
+               child.grid[x][y] = maximizing_player;
+               value = std::max(value, minimax(child, depth+1, !playing_as_maximizer));
+           }
+           return value;
+        } else {
+           // score value = INT_MAX;
+           score value = 1000;
+           for(auto move: board.empty_slots()){
+               auto [x,y] = move;
+               BoardState child = board;
+               child.grid[x][y] = inverse_player(maximizing_player);
+               value = std::min(value, minimax(child, depth+1, !playing_as_maximizer));
+           }
+           return value;
         }
     }
-    Move heuristic_score(BoardState &board, SquareState maximizing_player){
-        // For all rules (WinStates) tally how many our maximizing_player overlaps
-        // also tally how many of maximizing_player pieces are in each rule.
-        // return the product of these two numbers.
-        // Position heuristic_position{};
-        auto tally_rules_hit{0};
-        auto tally_mplayer_pieces{0};
-        for(auto rule: WinStates){
-            auto serialized_board_for_maximizing_player = board.serialize_board_state_for_player(maximizing_player);
-            auto bit_overlap = (serialized_board_for_maximizing_player & rule.bits);
-            if(bit_overlap.any()){ //overlaps with rule (i.e at least one piece of MPlayer is hitting this rule)
-                tally_rules_hit++;
-                // count how many of those bits were hit (i.e how many pieces MPlayer has in that rule)
-                // because having two pieces in a line already is much better than only having one.
-                tally_mplayer_pieces += bit_overlap.count();
-            }
-        }
 
-        // For whatever the matched/hit rule with highest value (tallies), I want an available
-        // position in that line.
-        // HANG ON A SECOND, we don't actually care about the move for a heuristic function
-        // since the board is already FULL, we just want the value.
-
-        #ifdef ENABLE_DEBUG
-        std::cout << "Mplayer pieces: " << tally_mplayer_pieces << "\n";
-        std::cout << "Rules hit: " << tally_rules_hit << "\n";
-        std::cout << "-------------------------------------- \n";
-        #endif
-
-        Move heuristic_move{.value = tally_mplayer_pieces * tally_rules_hit,
-        // Move heuristic_move{.value = tally_mplayer_pieces ,
-        // Move heuristic_move{.value = tally_rules_hit,
-            .pos = {.x = 2, .y = 2}
-        };
-        return heuristic_move;
+    // score heuristic(BoardState &board, bool playing_as_maximizer){
+    score heuristic(BoardState &board){
+        // score value{0};
+        // if(playing_as_maximizer){
+           std::bitset<BOARD_SIZE> serialized_board_for_maxim_player = board.serialize_board_state_for_player(maximizing_player);
+           std::bitset<BOARD_SIZE> serialized_board_for_minim_player = board.serialize_board_state_for_player(inverse_player(maximizing_player));
+           for(auto rule:WinStates){
+               if((rule.bits & serialized_board_for_maxim_player) == rule.bits){
+                  return 10;
+               }
+               if((rule.bits & serialized_board_for_minim_player) == rule.bits){
+                   return -10;
+               }
+           }
+           return 0;
+        // }else{
+        //    std::bitset<BOARD_SIZE> serialized_board_for_minim_player = board.serialize_board_state_for_player(inverse_player(maximizing_player));
+        //    for(auto rule:WinStates){
+        //        if((rule.bits & serialized_board_for_minim_player) == rule.bits){
+        //           return -10;
+        //        }
+        //    }
+        //    return 0;
+        // }
     }
+    // Move minimax(BoardState &board, int depth, bool playing_as_maximizer){
+    //     //ISSUES:
+    //     // 1. Both best/worst (i.e first/last) give me the same value
+    //     // 2. the heuristic isn't good (should instead get points if beat opponent, no points if draw, negative points if opponent wins or similar scheme)
+    //     // std::cout << "HEREEEEEE MA FRIEND : fullnesss::>> " << board.is_full();
+    //     if (depth ==0 || board.is_full() || board.exhaustive_check_for_winner(SquareState::Circle)) {
+    //         return {10, {0,0}};
+    //     }
+    //     if (depth ==0 || board.is_full() || board.exhaustive_check_for_winner(SquareState::Cross)) {
+    //         return {0,{0,0}};
+    //     }
+    //     // if(depth==0 || board.is_full() || board.exhaustive_check_for_winner(SquareState::Circle) || board.exhaustive_check_for_winner(SquareState::Cross)){
+    //     // // if(depth==0 || board.exhaustive_check_for_winner(SquareState::Circle) || board.exhaustive_check_for_winner(SquareState::Cross)){
+    //     //     if(playing_as_maximizer){
+    //     //         // return heuristic_score2(board, maximizing_player);
+    //     //         return heuristic_score2(board, !playing_as_maximizer);
+    //     //         // return (playing_as_maximizer)?heuristic_score2(board, playing_as_maximizer):heuristic_score2(board, !playing_as_maximizer);
+    //     //     } else {
+    //     //         return heuristic_score2(board, playing_as_maximizer);
+    //     //     }
+    //     // }
+
+    //     if(playing_as_maximizer){
+    //         std::vector<std::tuple<score,unsigned long,unsigned long>> possible_positions{0};
+    //         score value = INT_MIN;
+    //         for(auto empty_square: board.empty_slots()){
+    //             auto [x,y] = empty_square;
+    //             BoardState child_board = board; //need to make it deep copy semantics, currently only copies ref
+    //             child_board.grid[x][y] = SquareState::Circle;
+    //             value = std::max(value,minimax(child_board, depth-1, false).value);
+    //             possible_positions.push_back(std::make_tuple(value,x,y));
+    //         }
+    //         // Move m = {.value=value, .pos={.x=0, .y=0}};
+    //         // Find best position (i.e the x&y pair that yields highest value)
+    //         sort(possible_positions.begin(), possible_positions.end());
+    //         int idx = possible_positions.size()-1;
+    //         // int idx = 0;
+    //         Position best = {std::get<1>(possible_positions[idx]), std::get<2>(possible_positions[idx])};
+    //         std::cout << "Possible moves Circle:  "<< possible_positions.size() << "\n";
+    //         std::cout << "LAST MOVE IN VECS OF MOVES \n";
+    //         std::cout << std::get<0>(possible_positions[possible_positions.size()-1])
+    //                   << ", " << std::get<1>(possible_positions[possible_positions.size()-1])
+    //                   << ", " << std::get<2>(possible_positions[possible_positions.size()-1]) << "\n";
+
+
+    //         std::cout << "FIRST MOVE IN VEC \n";
+    //         std::cout << std::get<0>(possible_positions[0])
+    //                   << ", " << std::get<1>(possible_positions[0])
+    //                   << ", " << std::get<2>(possible_positions[0]) << "\n";
+
+    //         // return {value, {.x=0, .y=0}};
+    //         return {value, best};
+    //     }else{
+    //         std::vector<std::tuple<score,unsigned long,unsigned long>> possible_positions{0};
+    //         score value = INT_MAX;
+    //         for(auto empty_square: board.empty_slots()){
+    //             auto [x,y] = empty_square;
+    //             BoardState child_board = board; //need to make it deep copy semantics, currently only copies ref
+    //             child_board.grid[x][y] = SquareState::Cross;
+    //             value = std::min(value,minimax(child_board, depth-1, true).value);
+    //             possible_positions.push_back(std::make_tuple(value,x,y));
+    //         }
+    //         sort(possible_positions.begin(), possible_positions.end());
+    //         // int idx = possible_positions.size()-1;
+    //         int idx = 0;
+    //         Position best = {std::get<1>(possible_positions[idx]), std::get<2>(possible_positions[idx])};
+
+    //         std::cout << "Possible moves Cross:  "<< possible_positions.size() << "\n";
+    //         std::cout << "LAST MOVE IN VECS OF MOVES \n";
+    //         std::cout << std::get<0>(possible_positions[possible_positions.size()-1])
+    //                   << ", " << std::get<1>(possible_positions[possible_positions.size()-1])
+    //                   << ", " << std::get<2>(possible_positions[possible_positions.size()-1]) << "\n";
+
+
+    //         std::cout << "FIRST MOVE IN VEC \n";
+    //         std::cout << std::get<0>(possible_positions[0])
+    //                   << ", " << std::get<1>(possible_positions[0])
+    //                   << ", " << std::get<2>(possible_positions[0]) << "\n";
+    //         return {value, best};
+    //     }
+    // }
+
+
+    // Move heuristic_score2(BoardState &board, bool playing_as_maximizer){
+    //     // auto tally_rules_hit{0UL};
+    //     score tally_rules_hit{};
+    //     std::bitset<9> serialized_board_for_maximizing_player{};
+    //     if(playing_as_maximizer){
+    //     serialized_board_for_maximizing_player = board.serialize_board_state_for_player(SquareState::Circle);
+    //     } else{
+    //     serialized_board_for_maximizing_player = board.serialize_board_state_for_player(SquareState::Cross);
+    //     }
+
+    //     for(auto rule: WinStates){
+    //         std::bitset<BOARD_SIZE> bit_overlap = (serialized_board_for_maximizing_player & rule.bits);
+    //         // std::cout << "COUNT OF BITS: " << bit_overlap.count() << " \n";
+    //         tally_rules_hit = (tally_rules_hit>bit_overlap.count())? tally_rules_hit:bit_overlap.count();  //std::max(tally_rules_hit,bit_overlap.count());
+    //         // if(bit_overlap.all()){
+    //         // if((bit_overlap&rule.bits) == rule.bits){
+    //         // if(bit_overlap.any()){
+    //             // tally_rules_hit++;
+    //             // tally_mplayer_pieces += bit_overlap.count();
+    //         // }
+    //     }
+    //     // Move heuristic_move{.value = tally_mplayer_pieces + tally_rules_hit,
+
+    //     // std::cout << "TALLY: " << tally_rules_hit << " \n";
+    //     Move heuristic_move = {.value = tally_rules_hit, .pos = {.x = 2, .y = 2}};
+    //     return heuristic_move;
+    // }
+
+    // Move heuristic_score(BoardState &board, SquareState maximizing_player){
+    //     // For all rules (WinStates) tally how many our maximizing_player overlaps
+    //     // also tally how many of maximizing_player pieces are in each rule.
+    //     // return the product of these two numbers.
+    //     // Position heuristic_position{};
+    //     // auto tally_rules_hit{0UL};
+    //     // auto tally_mplayer_pieces{0UL};
+    //     score tally_rules_hit{};
+    //     score tally_mplayer_pieces{};
+    //     for(auto rule: WinStates){
+    //         auto serialized_board_for_maximizing_player = board.serialize_board_state_for_player(maximizing_player);
+    //         auto bit_overlap = (serialized_board_for_maximizing_player & rule.bits);
+    //         if(bit_overlap.any()){ //overlaps with rule (i.e at least one piece of MPlayer is hitting this rule)
+    //             tally_rules_hit++;
+    //             // count how many of those bits were hit (i.e how many pieces MPlayer has in that rule)
+    //             // because having two pieces in a line already is much better than only having one.
+    //             tally_mplayer_pieces += bit_overlap.count();
+    //         }
+    //     }
+
+    //     // For whatever the matched/hit rule with highest value (tallies), I want an available
+    //     // position in that line.
+    //     // HANG ON A SECOND, we don't actually care about the move for a heuristic function
+    //     // since the board is already FULL, we just want the value.
+
+    //     #ifdef ENABLE_DEBUG
+    //     std::cout << "Mplayer pieces: " << tally_mplayer_pieces << "\n";
+    //     std::cout << "Rules hit: " << tally_rules_hit << "\n";
+    //     std::cout << "-------------------------------------- \n";
+    //     #endif
+
+    //     Move heuristic_move{.value = tally_mplayer_pieces * tally_rules_hit,
+    //     // Move heuristic_move{.value = tally_mplayer_pieces ,
+    //     // Move heuristic_move{.value = tally_rules_hit,
+    //         .pos = {.x = 2, .y = 2}
+    //     };
+    //     return heuristic_move;
+    // }
 };
 
 auto main(int argc, const char** argv) -> int {
@@ -402,40 +568,80 @@ auto main(int argc, const char** argv) -> int {
     // }
 
     // std::cout << "HEREEEEEE MA FRIEND : fullnesss::>> " << board.is_full();
-    board.grid[0][0] = SquareState::Circle;
-    board.grid[0][1] = SquareState::Cross;
-    board.grid[0][2] = SquareState::Circle;
-    board.grid[1][0] = SquareState::Cross;
-    board.grid[1][1] = SquareState::Empty;
-    board.grid[1][2] = SquareState::Cross;
-    board.grid[2][0] = SquareState::Empty;
-    board.grid[2][1] = SquareState::Empty;
-    board.grid[2][2] = SquareState::Circle;
+    // TEST1
+    // board.grid[0][0] = SquareState::Circle;
+    // board.grid[0][1] = SquareState::Empty;
+    // board.grid[0][2] = SquareState::Cross;
+    // board.grid[1][0] = SquareState::Empty;
+    // board.grid[1][1] = SquareState::Circle;
+    // board.grid[1][2] = SquareState::Cross;
+    // board.grid[2][0] = SquareState::Empty;
+    // board.grid[2][1] = SquareState::Empty;
+    // board.grid[2][2] = SquareState::Circle;
 
+    // TEST2
+    // board.grid[0][0] = SquareState::Cross;
+    // board.grid[0][1] = SquareState::Empty;
+    // board.grid[0][2] = SquareState::Circle;
+    // board.grid[1][0] = SquareState::Empty;
+    // board.grid[1][1] = SquareState::Cross;
+    // board.grid[1][2] = SquareState::Circle;
+    // board.grid[2][0] = SquareState::Empty;
+    // board.grid[2][1] = SquareState::Empty;
+    // board.grid[2][2] = SquareState::Cross;
+
+
+    // TEST3
+    // board.grid[0][0] = SquareState::Cross;
+    // board.grid[0][1] = SquareState::Empty;
+    // board.grid[0][2] = SquareState::Circle;
+    // board.grid[1][0] = SquareState::Cross;
+    // board.grid[1][1] = SquareState::Circle;
+    // board.grid[1][2] = SquareState::Circle;
+    // board.grid[2][0] = SquareState::Empty;
+    // board.grid[2][1] = SquareState::Empty;
+    // board.grid[2][2] = SquareState::Cross;
+
+
+    // board.grid[0][0] = SquareState::Empty;
+    // board.grid[0][1] = SquareState::Empty;
+    // board.grid[0][2] = SquareState::Empty;
+    // board.grid[1][0] = SquareState::Empty;
+    // board.grid[1][1] = SquareState::Empty;
+    // board.grid[1][2] = SquareState::Empty;
+    // board.grid[2][0] = SquareState::Cross;
+    // board.grid[2][1] = SquareState::Empty;
+    // board.grid[2][2] = SquareState::Empty;
+    // board.print_board_state();
+    // std::cout << ai.heuristic(board) << "\n";
+    // exit(0);
+    // exit(0);
     // std::cout << "HEREEEEEE MA FRIEND : fullnesss::>> " << board.is_full();
     // board.print_board_state();
 
     // score val = ai.heuristic_score(board, SquareState::Circle);
     // std::cout << "Value: " << val << "\n";
     // std::cout << "Fullness: " << board.is_full() << "\n";
-    // exi(0);
+    // exit(0);
     bool did_circle_win = board.exhaustive_check_for_winner(SquareState::Circle);
     bool did_cross_win = board.exhaustive_check_for_winner(SquareState::Cross);
+    bool draw_condition = board.is_draw();
 
-    while(!did_circle_win && !did_cross_win){
-
-        Position ai_pos = ai.next_move(board);
-        board.grid[ai_pos.x][ai_pos.y] = SquareState::Circle;
-
+    while(!did_circle_win && !did_cross_win && !draw_condition){
         board.print_board_state();
         Result res = board.get_user_input();
         board.grid[res.position.x][res.position.y] = res.piece;
+        did_cross_win = board.exhaustive_check_for_winner(SquareState::Cross);
 
+        if(!board.is_draw() && !did_cross_win){
+        Position ai_pos = ai.next_move(board);
+        board.grid[ai_pos.x][ai_pos.y] = ai.maximizing_player;//SquareState::Circle;
+        }
         // std::cout << "HEREEEE";
         // Position ai_pos = ai.next_move(board);
         // board.grid[ai_pos.x][ai_pos.y] = SquareState::Circle;
         did_circle_win = board.exhaustive_check_for_winner(SquareState::Circle);
-        did_cross_win = board.exhaustive_check_for_winner(SquareState::Cross);
+        draw_condition = board.is_draw();
     }
 
     board.print_board_state();
@@ -446,33 +652,33 @@ auto main(int argc, const char** argv) -> int {
 
 // Test cases (OPTIONAL)
 
-TEST_CASE("testing the heuristic_score function") {
-    // Base test conditions, objects and functions to be tested:
-    BoardState board{};
-    SquareState maximizing_player = SquareState::Circle;
-    MiniMax ai{maximizing_player};
-    REQUIRE(board.winner == false);
-    board.grid[0][0] = maximizing_player;
-    board.grid[1][0] = maximizing_player;
-    board.grid[1][1] = inverse_player(maximizing_player);
+// TEST_CASE("testing the heuristic_score function") {
+//     // Base test conditions, objects and functions to be tested:
+//     BoardState board{};
+//     SquareState maximizing_player = SquareState::Circle;
+//     MiniMax ai{maximizing_player};
+//     REQUIRE(board.winner == false);
+//     board.grid[0][0] = maximizing_player;
+//     board.grid[1][0] = maximizing_player;
+//     board.grid[1][1] = inverse_player(maximizing_player);
 
-    SUBCASE("Base: two circles in vertical column, one cross in centre"){
-        score val = ai.heuristic_score(board, maximizing_player).value;
-        CHECK(val == (4*5));
-    }
+//     SUBCASE("Base: two circles in vertical column, one cross in centre"){
+//         score val = ai.heuristic_score(board, maximizing_player);
+//         CHECK(val == (4*5));
+//     }
 
-    SUBCASE("two circles in vertical column, one circle in middle of last column, one cross in centre"){
-        board.grid[1][2] = maximizing_player;
-        score val = ai.heuristic_score(board, maximizing_player).value;
-        CHECK(val == (5*7));
-    }
+//     SUBCASE("two circles in vertical column, one circle in middle of last column, one cross in centre"){
+//         board.grid[1][2] = maximizing_player;
+//         score val = ai.heuristic_score(board, maximizing_player).value;
+//         CHECK(val == (5*7));
+//     }
 
-    SUBCASE("two circles in vertical column, one cross in the centre, one cross in bottom right corner"){
-        board.grid[2][2] = inverse_player(maximizing_player);
-        score val = ai.heuristic_score(board, maximizing_player).value;
-        CHECK(val == (4*5));
-    }
-}
+//     SUBCASE("two circles in vertical column, one cross in the centre, one cross in bottom right corner"){
+//         board.grid[2][2] = inverse_player(maximizing_player);
+//         score val = ai.heuristic_score(board, maximizing_player).value;
+//         CHECK(val == (4*5));
+//     }
+// }
 
 
 TEST_CASE("testing board.is_full() method when board is FULL"){
