@@ -13,7 +13,7 @@
 # All three are needed to run the demo.
 
 CC = emcc
-CXX = em++
+CXX = em++ -MJ compile_commands.json
 WEB_DIR = web
 EXE = $(WEB_DIR)/index.html
 IMGUI_DIR = ./imgui
