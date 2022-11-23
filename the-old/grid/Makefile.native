@@ -24,7 +24,8 @@ OBJS = $(addsuffix .o, $(basename $(notdir $(SOURCES))))
 UNAME_S := $(shell uname -s)
 LINUX_GL_LIBS = -lGL
 
-CXXFLAGS = -std=c++11 -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends
+#clang++ -std=c++20 -x c++-module engine.cppm --precompile -o engine.pcm && clang++ -std=c++20 use.cpp -fprebuilt-module-path=. engine.pcm -o use.out
+CXXFLAGS = -std=c++20 -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends -fprebuilt-module-path=../ENGINE/
 CXXFLAGS += -g -Wall -Wformat
 LIBS =
 
@@ -54,10 +55,10 @@ endif
 ifeq ($(UNAME_S), Darwin) #APPLE
 	ECHO_MESSAGE = "Mac OS X"
 	LIBS += -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo -framework SDL2 #`sdl2-config --libs`
-	LIBS += -L/usr/local/lib -L/opt/local/lib -lGLEW
+	LIBS += -L/usr/local/lib -L/opt/local/lib -lGLEW -fprebuilt-module-path=../ENGINE/ ./../ENGINE/engine.pcm
 
     #CXXFLAGS += `sdl2-config --cflags`
-	CXXFLAGS += -I/usr/local/include -I/opt/local/include -isystem /Library/Frameworks/SDL2.framework/Headers -iframework /Library/Frameworks
+	CXXFLAGS += -I/usr/local/include -I/opt/local/include -isystem /Library/Frameworks/SDL2.framework/Headers -iframework /Library/Frameworks 
 	CFLAGS = $(CXXFLAGS)
 endif
 

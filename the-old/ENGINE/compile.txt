@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/Users/spartacoosh/Code/artificially-games/the-old/ENGINE",
+  "file": "engine.cppm",
+  "output": "engine.pcm",
+  "arguments": ["clang++ -std=c++20 -x c++-module engine.cppm --precompile -o engine.pcm"]
+},
+{
+  "directory": "/Users/spartacoosh/Code/artificially-games/the-old/ENGINE",
+  "file": "use.cpp",
+  "output": "use.out",
+  "arguments": ["clang++ -std=c++20 use.cpp -I engine -fmodule-file=engine.pcm -fprebuilt-module-path=. engine.pcm -o use.out"]
+}
+]
