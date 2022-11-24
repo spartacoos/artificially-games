@@ -25,7 +25,8 @@ UNAME_S := $(shell uname -s)
 LINUX_GL_LIBS = -lGL
 
 #clang++ -std=c++20 -x c++-module engine.cppm --precompile -o engine.pcm && clang++ -std=c++20 use.cpp -fprebuilt-module-path=. engine.pcm -o use.out
-CXXFLAGS = -std=c++20 -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends -fprebuilt-module-path=../ENGINE/
+#clang++ -std=c++20 -x c++-module engine.cppm --precompile -o engine.pcm
+CXXFLAGS = -std=c++20  -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends -fprebuilt-module-path=../ENGINE/
 CXXFLAGS += -g -Wall -Wformat
 LIBS =
 
@@ -71,8 +72,16 @@ ifeq ($(OS), Windows_NT)
 endif
 
 ##---------------------------------------------------------------------
+##
+# clang++ -std=c++20 -x c++-module ./../ENGINE/engine.cppm --precompile -o ./../ENGINE/engine.pcm
 ## BUILD RULES
+# explanation for line below(custom rule for engine): -c $< -o $@ means -c engine.cppm -o engine.pcm
+# $< it takes the first thing after the ":"
+# $@ it takes the name of the target (i.e name before ":")
+# #./../ENGINE/engine.pcm #-c $< -o $@
 ##---------------------------------------------------------------------
+# ../ENGINE/%.pcm:../ENGINE/%.cppm
+# 	clang++ -std=c++20 -x c++-module ../ENGINE/engine.cppm --precompile
 
 %.o:%.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
@@ -90,4 +99,7 @@ $(EXE): $(OBJS)
 	$(CXX) -o $@ $^ $(CXXFLAGS) $(LIBS)
 
 clean:
-	rm -f $(EXE) $(OBJS)
+	rm -f ../ENGINE/engine.pcm && rm -f $(EXE) $(OBJS)
+
+engine:./../ENGINE/engine.cppm
+	clang++ -std=c++20 -x c++-module ./../ENGINE/engine.cppm --precompile -o ./../ENGINE/engine.pcm
