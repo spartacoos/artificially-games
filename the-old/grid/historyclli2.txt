@@ -1,0 +1,1026 @@
+  100  make
+  101  make clean
+  102  make
+  103  make clean
+  104  make
+  105  make clean
+  106  make
+  107  ls
+  108  cat compile_commands.json
+  109  make clean
+  110  make
+  111  make clean
+  112  make
+  113  make clean
+  114  make
+  115  ls imgui/backends
+  116  ls imgui
+  117  ls
+  118  ls
+  119  make clean
+  120  make
+  121  make clean
+  122  make
+  123  make clean
+  124  make
+  125  ls imgui/backends/
+  126  make clean
+  127  make
+  128  ls
+  129  uname -s
+  130  make clean
+  131  make clean
+  132  make clean
+  133  make clean
+  134  make
+  135  make
+  136  make clean
+  137  make
+  138  ls /Library/Frameworks/SDL2.framework/Headers
+  139  cat /Library/Frameworks/SDL2.framework/Headers/SDL_config_macosx.h
+  140  ls
+  141  make clean
+  142  make
+  143  make clean
+  144  make
+  145  make clean
+  146  make
+  147  make clean
+  148  make
+  149  make clean
+  150  make
+  151  make clean
+  152  make
+  153  cat compile_commands.json
+  154  ls
+  155  make clean
+  156  make
+  157  make clean
+  158  make
+  159  ls
+  160  make clean
+  161  make
+  162  make clean
+  163  make
+  164  ls
+  165  make clean
+  166  make
+  167  make clean
+  168  make
+  169  make clean
+  170  make
+  171  mv Makefile bad_copyMakefileNative 
+  172  mv main.cpp copy_main.cpp
+  173  touch main.cpp
+  174  touch Makefile
+  175  make clean
+  176  make
+  177  make clean
+  178  make
+  179  make clean
+  180  make clean
+  181  make
+  182  ls
+  183  make clean
+  184  make
+  185  make clean
+  186  make
+  187  ls
+  188  ls imgui
+  189  ls imgui/backends
+  190  ls
+  191  make clean
+  192  make
+  193  make clean
+  194  ls
+  195  rm main.wasm
+  196  ls imgui
+  197  make
+  198  ls
+  199  file main.o
+  200  file imgui.o
+  201  ls web
+  202  ls
+  203  ls imgui/
+  204  file imgui_demo.o
+  205  mv Makefile lastMakefileCopy
+  206  touch Makefile.native
+  207  make -f Makefile.native
+  208  make -f Makefile.native
+  209  make -f Makefile.native clean
+  210  make -f Makefile.native 
+  211  make -f Makefile.native clean
+  212  make -f Makefile.native 
+  213  ls
+  214  ls imgui
+  215  ls imgui/backends
+  216  make -f Makefile.native clean
+  217  make -f Makefile.native 
+  218  make -f Makefile.native clean
+  219  make -f Makefile.native 
+  220  ls
+  221  file main.o
+  222  ./main.o
+  223  chmod 755 main.o
+  224  ./main.o
+  225  ls
+  226  file imgui.o
+  227  otool -L main.o
+  228  ls imgui/backends
+  229  make -f Makefile.native clean
+  230  make -f Makefile.native 
+  231  make -f Makefile.native clean
+  232  make -f Makefile.native 
+  233  make -f Makefile.native clean
+  234  make -f Makefile.native 
+  235  make -f Makefile.native clean
+  236  make -f Makefile.native 
+  237  file main.o
+  238  ./main.o
+  239  otool -L main.o
+  240  otool -L ./main.o
+  241  otool main.o
+  242  otool -f main.o
+  243  cat main.
+  244  cat main.o
+  245  ls
+  246  otool main.o
+  247  make -f Makefile.native clean
+  248  make -f Makefile.native 
+  249  ls
+  250  clang++ --help
+  251  make -f Makefile.native clean
+  252  make -f Makefile.native 
+  253  ls
+  254  otool native
+  255  otool -L native
+  256  native
+  257  ./native
+  258  touch Makefile.web
+  259  make -f Makefile.native clean
+  260  make -f Makefile.web serve
+  261  ls
+  262  ls web
+  263  make -f Makefile.native clean
+  264  make -f Makefile.web clean
+  265  make -f Makefile.web 
+  266  make -f Makefile.web serve
+  267  ls
+  268  make -f Makefile.web clean
+  269  ls
+  270  make -f Makefile.web clean
+  271  ls
+  272  make -f Makefile.web 
+  273  make -f Makefile.web clean
+  274  make -f Makefile.web 
+  275  ls
+  276  ls web
+  277  make -f Makefile.web serve
+  278  make -f Makefile.web clean
+  279  make -f Makefile.web 
+  280  make -f Makefile.web serve
+  281  make -f Makefile.web clean
+  282  make -f Makefile.web 
+  283  make -f Makefile.web serve
+  284  make -f Makefile.web clean
+  285  make -f Makefile.web 
+  286  make -f Makefile.web serve
+  287  cd ..
+  288  cd ..
+  289  git add .
+  290  git commit -m "feat: builds natively and on the web"
+  291  git push
+  292  ls
+  293  make -f Makefile.web clean
+  294  cd the-old/grid
+  295  make -f Makefile.web clean
+  296  make -f Makefile.native clean
+  297  make -f Makefile.native 
+  298  ./native
+  299  ./native
+  300  make -f Makefile.native clean
+  301  make -f Makefile.native 
+  302  ./native
+  303  make -f Makefile.native 
+  304  ./native
+  305  ./native
+  306  make -f Makefile.native 
+  307  ./native
+  308  make -f Makefile.native 
+  309  ./native
+  310  make -f Makefile.native  && ./native
+  311  ls
+  312  cd ..
+  313  ls
+  314  ls
+  315  touch example.cpp
+  316  ls
+  317  clang++ example.cpp -o example && ./example
+  318  clang++ example.cpp game.cpp -o example && ./example
+  319  clang++ example.cpp game.cpp -o example && ./example
+  320  ls
+  321  file a.out
+  322  ls -la
+  323  clang++ example.cpp game.cpp -o example && ./example
+  324  clang++ example.cpp game.cpp -o example && ./example
+  325  clang++ example.cpp game.cpp -o example && ./example
+  326  clang++ -std=c++17 example.cpp game.cpp -o example && ./example
+  327  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  328  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  329  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  330  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  331  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  332  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  333  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  334  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  335  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  336  clang++ -std=c++20 example.cpp game.cpp -v -o example && ./example
+  337  clang++ -std=c++20 example.cpp game.cpp -v -o example && ./example
+  338  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  339  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  340  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  341  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  342  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  343  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  344  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  345  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  346  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  347  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  348  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  349  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  350  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  351  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  352  clang++ -std=c++20 example.cpp game.cpp -o example && ./example
+  353  ls
+  354  mkdir ENGINE
+  355  cp backup_game.cc ENGINE/engine.cpp
+  356  cd ENGINE
+  357  ls
+  358  touch use.cpp
+  359  cp ../grid/compile_commands.json .
+  360  ls
+  361  clang++ -std=c++20 -x c++-module engine.cppm --precompile -o engine.pcm
+  362  clang++ -std=c++20 -x c++-module engine.cppm --precompile -o engine.pcm
+  363  ls
+  364  clang++ -std=c++20 use.cpp -fprebuilt-module-path=. engine.pcm -o use.out
+  365  ls
+  366  cat ../grid/compile_commands.json
+  367  clang++ -std=c++20 use.cpp -fprebuilt-module-path=. engine.pcm -o use.out
+  368  ls
+  369  ./use.out
+  370  clang++ -std=c++20 use.cpp -fprebuilt-module-path=. engine.pcm -o use.out 
+  371  clang++ -std=c++20 use.cpp -fprebuilt-module-path=. engine.pcm -o use.out 
+  372  clang++ -std=c++20 -x c++-module engine.cppm --precompile -o engine.pcm
+  373  clang++ -std=c++20 use.cpp -fprebuilt-module-path=. engine.pcm -o use.out 
+  374  clang++ -std=c++20 use.cpp -fprebuilt-module-path=. engine.pcm -o use.out 
+  375  clang++ -std=c++20 use.cpp -fprebuilt-module-path=. engine.pcm -o use.out 
+  376  clang++ -std=c++20 use.cpp -fprebuilt-module-path=. engine.pcm -o use.out 
+  377  clang++ -std=c++20 use.cpp -fprebuilt-module-path=. engine.pcm -o use.out 
+  378  clang++ -std=c++20 use.cpp -fprebuilt-module-path=. engine.pcm -o use.out 
+  379  clang++ -std=c++20 use.cpp -fprebuilt-module-path=. engine.pcm -o use.out 
+  380  clang++ -std=c++20 use.cpp -fprebuilt-module-path=. engine.pcm -o use.out 
+  381  ./use.out
+  382  ./use.out
+  383  clang++ -std=c++20 use.cpp -fprebuilt-module-path=. engine.pcm -o use.out 
+  384  ./use.out
+  385  clang++ -std=c++20 use.cpp -fprebuilt-module-path=. engine.pcm -fmodule-file=engine.pcm -o use.out
+  386  ./use.out
+  387  clang++ -std=c++20 -fbuiltin-module-map -fmodules -x c++-module use.cpp -fprebuilt-module-path=. engine.pcm -o use.out
+  388  clang++ -std=c++20 -fbuiltin-module-map -x c++-module use.cpp -fprebuilt-module-path=. engine.pcm -o use.out
+  389  clang++ -std=c++20 -fmodules -x c++-module use.cpp -fprebuilt-module-path=. engine.pcm -o use.out
+  390  clang++ -std=c++20 -x c++-module use.cpp -fprebuilt-module-path=. engine.pcm -o use.out
+  391  clang++ -std=c++20 -x c++-module engine.cppm --precompile -o engine.pcm
+  392  clang++ -std=c++20 -x c++-module use.cpp -fprebuilt-module-path=. engine.pcm -o use.out
+  393  clang++ -std=c++20 use.cpp -fprebuilt-module-path=. engine.pcm -o use.out
+  394  ./use.out
+  395  clang++ -std=c++20 use.cpp -fmodules -fprebuilt-module-path=. engine.pcm -o use.out
+  396  ./use.out
+  397  clang++ -std=c++20 use.cpp -fmodules -fbuiltin-module-map -fprebuilt-module-path=. engine.pcm -o use.out
+  398  ./use.out
+  399  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ --driver-mode=g++ -fmodules -fbuiltin-module-map -fprebuilt-module-path=. -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -- /Users/spartacoosh/Code/artificially-games/the-old/ENGINE/use.cpp
+  400  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -std=c++20 --driver-mode=g++ -fprebuilt-module-path=. -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -- /Users/spartacoosh/Code/artificially-games/the-old/ENGINE/use.cpp
+  401  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -std=c++20 -fmodules --driver-mode=g++ -fprebuilt-module-path=. -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -- /Users/spartacoosh/Code/artificially-games/the-old/ENGINE/use.cpp
+  402  g++ --version
+  403  clang++ --version
+  404  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -std=c++20 -fmodules --driver-mode=g++ -fprebuilt-module-path=. -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -- /Users/spartacoosh/Code/artificially-games/the-old/ENGINE/use.cpp
+  405  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -std=c++20 -fmodules -fprebuilt-module-path=. -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -- /Users/spartacoosh/Code/artificially-games/the-old/ENGINE/use.cpp
+  406  clangd --help
+  407  pwd
+  408  ls
+  409  which clang++
+  410  ls
+  411  /opt/homebrew/Cellar/llvm/15.0.2/bin/clang++ --driver-mode=g++ -fprebuilt-module-path=. -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -- /Users/spartacoosh/Code/artificially-games/the-old/ENGINE/use.cpp
+  412  /opt/homebrew/Cellar/llvm/15.0.2/bin/clang++ -std=c++20 --driver-mode=g++ -fprebuilt-module-path=. -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -- use.cpp
+  413  /opt/homebrew/Cellar/llvm/15.0.2/bin/clang++ -std=c++20 --driver-mode=g++ -fprebuilt-module-path=. -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -- ./use.cpp
+  414  /opt/homebrew/Cellar/llvm/15.0.2/bin/clang++ --driver-mode=g++ -fprebuilt-module-path=. -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -- /Users/spartacoosh/Code/artificially-games/the-old/ENGINE/use.cpp
+  415  /opt/homebrew/Cellar/llvm/15.0.2/bin/clang++ --driver-mode=g++ -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -- /Users/spartacoosh/Code/artificially-games/the-old/ENGINE/use.cpp
+  416  /opt/homebrew/Cellar/llvm/15.0.2/bin/clang++ --driver-mode=g++ -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -fmodule-file ./engine.cppm -- /Users/spartacoosh/Code/artificially-games/the-old/ENGINE/use.cpp
+  417  ls
+  418  /opt/homebrew/Cellar/llvm/15.0.2/bin/clang++ --driver-mode=g++ -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -fmodule-file=./engine.cppm -- /Users/spartacoosh/Code/artificially-games/the-old/ENGINE/use.cpp
+  419  ls
+  420  /opt/homebrew/Cellar/llvm/15.0.2/bin/clang++ --driver-mode=g++ -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -fmodule-file=./engine.pcm -- /Users/spartacoosh/Code/artificially-games/the-old/ENGINE/use.cpp
+  421  /opt/homebrew/Cellar/llvm/15.0.2/bin/clang++ --driver-mode=g++ -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -fprebuilt-module-path=. -- /Users/spartacoosh/Code/artificially-games/the-old/ENGINE/use.cpp
+  422  /opt/homebrew/Cellar/llvm/15.0.2/bin/clang++ --driver-mode=g++ -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk --fprebuilt-module-path=. -- /Users/spartacoosh/Code/artificially-games/the-old/ENGINE/use.cpp
+  423  /opt/homebrew/Cellar/llvm/15.0.2/bin/clang++ --driver-mode=g++ -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk  -- /Users/spartacoosh/Code/artificially-games/the-old/ENGINE/use.cpp -fmodules-ts -fprebuilt-module-path=.
+  424  /opt/homebrew/Cellar/llvm/15.0.2/bin/clang++ --driver-mode=g++ -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -fmodules-ts -fprebuilt-module-path=. -- /Users/spartacoosh/Code/artificially-games/the-old/ENGINE/use.cpp 
+  425  /opt/homebrew/Cellar/llvm/15.0.2/bin/clang++ -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -fmodules-ts -fprebuilt-module-path=. -- /Users/spartacoosh/Code/artificially-games/the-old/ENGINE/use.cpp 
+  426  clang++ -std=c++20 -x c++-module engine.cppm --precompile -o engine.pcm
+  427  clang++ -std=c++20 use.cpp -fprebuilt-module-path=. engine.pcm -o use.out
+  428  ./use.out
+  429  ls -la
+  430  ls -la .cache
+  431  rm -rf .cache
+  432  ls
+  433  /opt/homebrew/Cellar/llvm/15.0.2/bin/clang++ -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -fmodules-ts -fprebuilt-module-path=. -- /Users/spartacoosh/Code/artificially-games/the-old/ENGINE/use.cpp 
+  434  /opt/homebrew/Cellar/llvm/15.0.2/bin/clang++ -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -std=c++20 -fmodules-ts -fprebuilt-module-path=. -- /Users/spartacoosh/Code/artificially-games/the-old/ENGINE/use.cpp 
+  435  /opt/homebrew/Cellar/llvm/15.0.2/bin/clang++ -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -std=c++17 -fmodules-ts -fprebuilt-module-path=. -- /Users/spartacoosh/Code/artificially-games/the-old/ENGINE/use.cpp 
+  436  /opt/homebrew/Cellar/llvm/15.0.2/bin/clang++ -resource-dir=/opt/homebrew/Cellar/llvm/15.0.2/lib/clang/15.0.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -std=c++20 -v -fmodules-ts -fprebuilt-module-path=. -- /Users/spartacoosh/Code/artificially-games/the-old/ENGINE/use.cpp 
+  437  ls
+  438  touch backup_commands.json
+  439  mv backup_commands.json backup_commands.txt
+  440  ls
+  441  ls
+  442  /opt/homebrew/opt/llvm/bin/clang++ -std=c++20 use.cpp engine.pcm -fprebuilt-module-path=. -o use.out 
+  443  ls
+  444  clang++ -std=c++20 -x c++-module engine.cppm --precompile -o engine.pcm
+  445  clang++ -MJ -std=c++20 -x c++-module engine.cppm --precompile -o engine.pcm
+  446  clang++ -std=c++20 -x c++-module engine.cppm --precompile -MJ -o engine.pcm
+  447  clang++ -std=c++20 -MJ -x c++-module engine.cppm --precompile -o engine.pcm
+  448  clang++ -std=c++20 -x c++-module engine.cppm -MJ --precompile -o engine.pcm
+  449  clang++ -std=c++20 -x c++-module -MJ engine.cppm --precompile -o engine.pcm
+  450  clang++ -std=c++20 -x c++-module engine.cppm -MJ --precompile -o engine.pcm
+  451  ls
+  452  ls
+  453  file -o
+  454  ls -la
+  455  rm "-o" "-std=c++20" "-x"
+  456  rm "-o" 
+  457  rm ./"-o" 
+  458  rm ./"-std=c++20"
+  459  ls
+  460  rm ./"-x"
+  461  ls
+  462  cp ../game.cpp engine.cppm
+  463  cd ..
+  464  ls
+  465  cd ENGINE
+  466  rm engine.cppm
+  467  cp ../backup_game.cc engine.cppm
+  468  ls
+  469  clang++ -std=c++20 engine.cppm --precompile -o engine.pcm
+  470  ls
+  471  clangd --version
+  472  ls -la
+  473  ls -la .cache
+  474  ls -la .cache/clangd
+  475  ls -la .cache/clangd/index
+  476  ls -la
+  477  ls .clangd
+  478  rm -rf .cache
+  479  ls -la
+  480  rm -rf .cache
+  481  rm -rf .cache
+  482  rm -rf .cache
+  483  ls
+  484  mv compile_commands.json compile.txt
+  485  ls -la
+  486  rm -rf .cache
+  487  ls
+  488  ls -la
+  489  rm -rf .cache
+  490  clang++ -std=c++20 -x c++-module engine.cppm --precompile -o engine.pcm && clang++ -std=c++20 use.cpp -fprebuilt-module-path=. engine.pcm -o use.out
+  491  clang++ -std=c++20 -x c++-module engine.cppm --precompile -o engine.pcm && clang++ -std=c++20 use.cpp -fprebuilt-module-path=. engine.pcm -o use.out && ./use.out
+  492  ls
+  493  cd ..
+  494  ls
+  495  ls GUI
+  496  ls -la
+  497  cd GUI
+  498  ls
+  499  ls
+  500  cat ../ENGINE/compile_commands.json
+  501  cat ../ENGINE/.clangd
+  502  ls
+  503  cp ../ENGINE/engine.* .
+  504  ls
+  505  rm engine.*
+  506  ls
+  507  cd ..
+  508  ls
+  509  cd ENGINE
+  510  cd ..
+  511  cd grid
+  512  ls
+  513  make -f Makefile.native
+  514  make -f Makefile.native
+  515  ./native
+  516  make -f Makefile.native
+  517  make -f Makefile.native clean
+  518  make -f Makefile.native
+  519  make -f Makefile.native clean
+  520  make -f Makefile.native
+  521  make -f Makefile.native clean
+  522  make -f Makefile.native
+  523  make -f Makefile.native clean
+  524  make -f Makefile.native
+  525  make -f Makefile.native clean
+  526  make -f Makefile.native
+  527  make -f Makefile.native clean
+  528  make -f Makefile.native
+  529  make -f Makefile.native clean
+  530  make -f Makefile.native
+  531  make -f Makefile.native clean
+  532  make -f Makefile.native
+  533  make -f Makefile.native clean
+  534  make -f Makefile.native
+  535  make -f Makefile.native clean
+  536  make -f Makefile.native
+  537  make -f Makefile.native clean
+  538  make -f Makefile.native
+  539  make -f Makefile.native clean
+  540  make -f Makefile.native
+  541  ls ./../ENGINE
+  542  make -f Makefile.native clean
+  543  make -f Makefile.native
+  544  make -f Makefile.native clean
+  545  make -f Makefile.native
+  546  make -f Makefile.native clean
+  547  make -f Makefile.native
+  548  cp ../ENGINE/engine.pcm .
+  549  ls
+  550  make -f Makefile.native clean
+  551  make -f Makefile.native
+  552  ./native
+  553  rm engine.pcm
+  554  ls
+  555  ls
+  556  make -f Makefile.native clean
+  557  make -f Makefile.native
+  558  make -f Makefile.native clean
+  559  make -f Makefile.native
+  560  make -f Makefile.native clean
+  561  make -f Makefile.native
+  562  make -f Makefile.native clean
+  563  make -f Makefile.native
+  564  make -f Makefile.native clean
+  565  make -f Makefile.native
+  566  ls
+  567  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  568  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  569  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  570  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  571  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  572  cd ..
+  573  cd ENGINE
+  574  clang++ -std=c++20 -x c++-module engine.cppm --precompile -o engine.pcm 
+  575  cd ..
+  576  cd grid
+  577  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  578  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  579  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  580  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  581  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  582  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  583  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  584  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  585  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  586  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  587  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  588  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  589  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  590  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  591  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  592  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  593  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  594  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  595  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  596  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  597  lldb ./native
+  598  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  599  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  600  cd ..
+  601  cd ENGINE
+  602  clang++ -std=c++20 -x c++-module engine.cppm --precompile -o engine.pcm 
+  603  clang++ -std=c++20 -x c++-module engine.cppm --precompile -o engine.pcm 
+  604   cd ..
+  605  cd grid
+  606  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  607  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  608  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  609  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  610  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  611  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  612  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  613  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  614  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  615  cd ..
+  616  cd ENGINE
+  617  clang++ -std=c++20 -x c++-module engine.cppm --precompile -o engine.pcm 
+  618  cd ..
+  619  cd grid
+  620  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  621  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  622  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  623  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  624  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  625  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  626  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  627  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  628  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  629  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  630  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  631  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  632  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  633  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  634  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  635  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  636  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  637  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  638  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  639  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  640  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  641  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  642  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  643  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  644  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  645  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  646  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  647  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  648  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  649  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  650  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  651  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  652  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  653  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  654  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  655  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  656  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  657  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  658  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  659  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  660  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  661  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  662  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  663  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  664  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  665  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  666  cd ..
+  667  cd ..
+  668  git add .
+  669  git commit -m "feat: working version v1 end-to-end -> engine + graphics"
+  670  git push
+  671  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  672  cd the-old/grid
+  673  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  674  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  675  ls -la ../ENGINE
+  676  ls
+  677  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  678  ls
+  679  ls -la ../ENGINE
+  680  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  681  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  682  ls -la ../ENGINE
+  683  ls
+  684  ls -la
+  685  rm engine.pcm
+  686  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  687  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  688  ls
+  689  ls -la ../ENGINE
+  690  ls
+  691  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  692  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  693  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  694  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  695  make -f Makefile.native clean && make -f Makefile.native && ./native 
+  696  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  697  man rm
+  698  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  699  ls ../ENGINE
+  700  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  701  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  702  cat ./../ENGINE/engine.cppm
+  703  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  704  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  705  ls
+  706  ls ../ENGINE
+  707  ls -la ../ENGINE
+  708  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  709  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  710  ls 
+  711  ls -la
+  712  ls -la ../ENGINE
+  713  cd ..
+  714  cd ..
+  715  git add .
+  716  git commit -m "build: Makefile can now build engine and gui from scratch by calling  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native"
+  717  git push
+  718  cd the-old/grid
+  719  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  720  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  721  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  722  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  723  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  724  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  725  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  726  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  727  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  728  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  729  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  730  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  731  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  732  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  733  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  734  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  735  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  736  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  737  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  738  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  739  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  740  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  741  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  742  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  743  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  744  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  745  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  746  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  747  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  748  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  749  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  750  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  751  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  752  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  753  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  754  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  755  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  756  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  757  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  758  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  759  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  760  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  761  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  762  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  763  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  764  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  765  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  766  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  767  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  768  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  769  make -f Makefile.native clean && make -f Makefile.native engine && make -f Makefile.native && ./native 
+  770  cd ..
+  771  cd ..
+  772  git add .
+  773  git commit -v "build: v2"
+  774  git commit -m "build: v2"
+  775  git push
+  776  cd the-old/grid
+  777  ls
+  778  make -f Makefile.web
+  779  make -f Makefile.native clean
+  780  make -f Makefile.web
+  781  make -f Makefile.native clean
+  782  make -f Makefile.web
+  783  make -f Makefile.web
+  784  make -f Makefile.web
+  785  make -f Makefile.web engine && make -f Makefile.web
+  786  make -f Makefile.web engine
+  787  make -f Makefile.web
+  788  make -f Makefile.web
+  789  echo $(CXXFLAGS)
+  790  echo $CXXFLAGS
+  791  echo $CXXFLAGS
+  792  make -f Makefile.web
+  793  make -f Makefile.web
+  794  make -f Makefile.web
+  795  make -f Makefile.web
+  796  make -f Makefile.web
+  797  make -f Makefile.web
+  798  make -f Makefile.web
+  799  make -f Makefile.web
+  800  cd ..
+  801  cd ENGINE
+  802  mkdir web
+  803  cd ..
+  804  cd grid
+  805  make -f Makefile.native clean
+  806  make -f Makefile.web engine && make -f Makefile.web
+  807  make -f Makefile.web engine 
+  808  cd ..
+  809  cd ENGINE
+  810  cd web
+  811  ls
+  812  cd ..
+  813  cd ..
+  814  cd grid
+  815  ls
+  816  make -f Makefile.web engine 
+  817  make -f Makefile.web engine 
+  818  cp ../ENGINE/engine.cppm ../ENGINE/engine.cpp
+  819  make -f Makefile.web engine 
+  820  make -f Makefile.web engine 
+  821  ls
+  822  ls web
+  823  make -f Makefile.web engine 
+  824  make -f Makefile.web engine 
+  825  make -f Makefile.web engine 
+  826  make -f Makefile.web engine 
+  827  make -f Makefile.web engine 
+  828  make -f Makefile.web engine 
+  829  make -f Makefile.web
+  830  ls ../ENGINE/web
+  831  make -f Makefile.web
+  832  make -f Makefile.web
+  833  ls ../ENGINE/web
+  834  ls ../ENGINE/web
+  835  make -f Makefile.web
+  836  make -f Makefile.web
+  837  make -f Makefile.web
+  838  cd ..
+  839  cd ENGINE
+  840  em++ engine.cpp -c -o engine_test.o
+  841  em++ -std=c++20 --no-entry engine.cpp -c -o engine_test.o
+  842  mv ../grid/engine_test.o
+  843  mv engine_test.o ../grid/engine_test.o
+  844  cd ..
+  845  cd grid
+  846  ls
+  847  em++ -std=c++20 main.cpp -c -o main_test.o
+  848  ls
+  849  ls web
+  850  em++ -std=c++20 main.cpp -c -o main_test.o
+  851  ls
+  852  em++ -std=c++20 -I./imgui main.cpp -c -o main_test.o
+  853  em++ -std=c++20 -I./imgui -s USE_SDL=2 main.cpp -c -o main_test.o
+  854  em++ -std=c++20 -I./imgui -I./imgui/backends -s USE_SDL=2 -s USE_WEBGL2=1 -s DISABLE_EXCEPTION_CATCHING=1 -s WASM=1 main.cpp -c -o main_test.o
+  855  em++ -std=c++20 -I./imgui -I./imgui/backends -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 main.cpp -c -o main_test.o
+  856  em++ -std=c++20 -I./imgui -I./imgui/backends -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fmodule-file=engine_test.o main.cpp -c -o main_test.o
+  857  ls
+  858  cp engine_test.o engine_test.pcm
+  859  em++ -std=c++20 -I./imgui -I./imgui/backends -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fmodule-file=engine_test.pcm main.cpp -c -o main_test.o
+  860  ls
+  861  cp ../ENGINE/engine.cpp ./engine_test.cpp
+  862  ls
+  863  em++ -std=c++20 -I./imgui -I./imgui/backends -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -s SINGLE_FILE=1 engine_test.cpp main.cpp -o result
+  864  em++ -std=c++20 -I./imgui -I./imgui/backends -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -sMAIN_MODULE main.cpp ../ENGINE/web/engine.wasm
+  865  em++ -std=c++20 -I./imgui -I./imgui/backends -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -sMAIN_MODULE=1 main.cpp ../ENGINE/web/engine.wasm
+  866  em++ -std=c++20 -I./imgui -I./imgui/backends -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -sMAIN_MODULE=2 main.cpp ../ENGINE/web/engine.wasm
+  867  em++ -std=c++20 -I./imgui -I./imgui/backends -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fprebuilt-file=engine.wasm -sMAIN_MODULE=2 main.cpp ../ENGINE/web/engine.wasm
+  868  em++ -std=c++20 -I./imgui -I./imgui/backends -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fprebuilt-file-path=. -sMAIN_MODULE=2 main.cpp ../ENGINE/web/engine.wasm
+  869  em++ -std=c++20 -I./imgui -I./imgui/backends -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fprebuilt-module-path=. -sMAIN_MODULE=2 main.cpp ../ENGINE/web/engine.wasm
+  870  em++ -std=c++20 -I./imgui -I./imgui/backends -I./../ENGINE/web/engine.wasm -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fprebuilt-module-path=. -sMAIN_MODULE=2 main.cpp ../ENGINE/web/engine.wasm
+  871  em++ -std=c++20 -I./imgui -I./imgui/backends -I./ -L./ -lengine_test.o -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fprebuilt-module-path=. -sMAIN_MODULE=2 main.cpp ../ENGINE/web/engine.wasm
+  872  em++ -std=c++20 -I./imgui -I./imgui/backends -I./ -L./ -lengine_test.o -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fprebuilt-module-path=. -sMAIN_MODULE=2 main.cpp ./engine_test.o
+  873  em++ -std=c++20 --no-entry engine.cpp -c -o -sSIDE_MODULE engine_test.o
+  874  ls
+  875  cp ../ENGINE/engine.cpp engine.cpp
+  876  em++ -std=c++20 --no-entry engine.cpp -sSIDE_MODULE -o engine_test.o
+  877  ls
+  878  em++ -std=c++20 -I./imgui -I./imgui/backends -I./ -L./ -lengine_test.o -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fprebuilt-module-path=. -sMAIN_MODULE=2 main.cpp ./engine_test.o
+  879  ls -la
+  880  ls .cache
+  881  ls .DS_Store
+  882  em++ -std=c++20 -I./imgui -I./imgui/backends -I./ -L./ -lengine_test.o -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fprebuilt-module-path=. -sMAIN_MODULE=2 main.cpp ./engine_test.o
+  883  ls ./
+  884  em++ -std=c++20 -I./imgui -I./imgui/backends -I./ -L./ -lengine_test.o -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fprebuilt-module-file=./engine_test.o -fprebuilt-module-path=. -sMAIN_MODULE=2 main.cpp ./engine_test.o
+  885  em++ -std=c++20 -I./imgui -I./imgui/backends -I./ -L./ -lengine_test.o -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fmodule-file=./engine_test.o -fprebuilt-module-path=. -sMAIN_MODULE=2 main.cpp ./engine_test.o
+  886  em++ -std=c++20 --no-entry -x c++-module engine.cpp --precompile -sSIDE_MODULE -o engine_test.o
+  887  em++ -std=c++20 --no-entry -x c++-module engine.cpp -sSIDE_MODULE -o engine_test.o
+  888  em++ -std=c++20 -I./imgui -I./imgui/backends -I./ -L./ -lengine_test.o -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fmodule-file=./engine_test.o -fprebuilt-module-path=. -sMAIN_MODULE=2 main.cpp ./engine_test.o
+  889  clang++ -std=c++20  --target=wasm32 --no-entry -x c++-module engine.cpp --precompile -o engine_test.pcm
+  890  clang++ -std=c++20  --target=wasm32 -x c++-module engine.cpp --precompile -o engine_test.pcm
+  891  clang++ -std=c++20  --target=wasm32 -x c++-module engine_test.cpp --precompile -o engine_test.pcm
+  892  which clang++
+  893  ls /opt/homebrew/opt/llvm/bin
+  894  ls /opt/homebrew/opt/llvm/include
+  895  ls /opt/homebrew/opt/llvm/include/c++
+  896  ls /opt/homebrew/opt/llvm/include/c++/v1
+  897  clang++ -std=c++20 -I /opt/homebrew/opt/llvm/include/c++/v1 --target=wasm32 -x c++-module engine_test.cpp --precompile -o engine_test.pcm
+  898  clang++ -std=c++20   -x c++-module engine_test.cpp --precompile --target=wasm32 -o engine_test.pcm
+  899  clang++ -std=c++20   -x c++-module engine_test.cpp --precompile --target=wasm32 -stdlib=libstdc++ -o engine_test.pcm
+  900  clang++ -std=c++20   -x c++-module engine_test.cpp --precompile --target=wasm32 -stdlib=/Users/spartacoosh/Code/Tools/wasi-sdk-o/build/libcxx/lib/libc++.a engine_test.pcm
+  901  clang++ -std=c++20   -x c++-module engine_test.cpp --precompile --target=wasm32 -I/Users/spartacoosh/Code/Tools/wasi-sdk-o/build/libcxx/lib/libc++.a engine_test.pcm
+  902  ls
+  903  clang++ -std=c++20   -x c++-module engine_test.cpp --precompile --target=wasm32 -I/Users/spartacoosh/Code/Tools/wasi-sdk-o/build/libcxx/lib/libc++.a -o engine_test.pcm
+  904  clang++ -std=c++20   -x c++-module engine_test.cpp --precompile --target=wasm32 -stdlib=libc++ -Wl,-rpath,/Users/spartacoosh/Code/Tools/wasi-sdk-o/build/libcxx/lib/ -o engine_test.pcm
+  905  clang++ -std=c++20   -x c++-module engine_test.cpp --precompile --target=wasm32 -stdlib=libc++ -Wl,-rpath,/Users/spartacoosh/Code/Tools/wasi-sdk-o/build/libcxx/lib -o engine_test.pcm
+  906  clang++ -std=c++20   -x c++-module engine_test.cpp --precompile --target=wasm32 -stdlib=libc++  -cxx-isystem  /Users/spartacoosh/Code/Tools/wasi-sdk/build/libcxx/include/c++/v1 -L /Users/spartacoosh/Code/Tools/wasi-sdk/build/libcxx/lib/libc++.a -o engine_test.pcm
+  907  clang++ -std=c++20   -x c++-module engine_test.cpp --precompile --target=wasm32 -stdlib=libc++  -cxx-isystem  /Users/spartacoosh/Code/Tools/wasi-sdk/build/libcxx/include/c++/v1 -L /Users/spartacoosh/Code/Tools/wasi-sdk/build/libcxx/lib/ -o engine_test.pcm
+  908  ls /Users/spartacoosh/Code/Tools/wasi-sdk/build/libcxx/include/c++/v1 
+  909  ls /Users/spartacoosh/Code/Tools/wasi-sdk/build/libcxx/include/c++/v1 | grep "std"
+  910  clang++ -std=c++20   -x c++-module engine_test.cpp --precompile --target=wasm32 -stdlib=libc++  -cxx-isystem  /Users/spartacoosh/Code/Tools/wasi-sdk/build/libcxx/include/c++/v1 -L /Users/spartacoosh/Code/Tools/wasi-sdk/build/libcxx/lib/ -o engine_test.pcm
+  911  clang++ -std=c++20   -x c++-module engine_test.cpp --precompile --target=wasm32 -stdlib=libc++ -L /Users/spartacoosh/Code/Tools/wasi-sdk/build/libcxx/lib/ -o engine_test.pcm
+  912  clang++ -std=c++20   -x c++-module engine_test.cpp --precompile -stdlib=libc++ -L /Users/spartacoosh/Code/Tools/wasi-sdk/build/libcxx/lib/ -o engine_test.pcm
+  913  clang++ -std=c++20   -x c++-module engine_test.cpp --precompile  -stdlib=libc++ -L /Users/spartacoosh/Code/Tools/wasi-sdk/build/libcxx/lib/ --target=wasm32 -o engine_test.pcm
+  914  clang++ --target=wasm32 -std=c++20   -x c++-module engine_test.cpp --precompile  -stdlib=libc++ -L /Users/spartacoosh/Code/Tools/wasi-sdk/build/libcxx/lib/  -o engine_test.pcm
+  915  clang++ --target=wasm32 -std=c++20   -x c++-module engine_test.cpp --precompile  -stdlib=libc++ -L /Users/spartacoosh/Code/Tools/wasi-sdk/build/libcxx/lib/  -o engine_test.pcm
+  916  clang++ --target=wasm64 engine_test.cpp -o engine_test.pcm
+  917  clang++ --target=wasm32 engine_test.cpp -o engine_test.pcm
+  918  clang++ -std=c++20   -x c++-module engine_test.cpp --precompile --target=wasm32 -stdlib=libc++  -cxx-isystem  /Users/spartacoosh/Code/Tools/wasi-sdk/build/libcxx/include/c++/v1 -L /Users/spartacoosh/Code/Tools/wasi-sdk/build/libcxx/lib/ -o engine_test.pcm
+  919  say shit
+  920  say yooo we are fucked
+  921  say yooo yoo yoo
+  922  say yooo yooo yoooooooo
+  923  say yooo yooo yooooooooo
+  924  say yooo yooo yoooooooooo
+  925  say yooo yooo yooo
+  926  say yooo yooo yooo what is up and down at the same time 
+  927  say "yooo yooo yooo what is up and down at the same time?" 
+  928  say "yooo yooo yooo what is up and down at the? same? time???????" 
+  929  ls
+  930  clang++ --target=wasm32 engine_test.cpp -o engine_test.pcm
+  931  clang++ --target=wasm32 sample.cpp -o sample_test.pcm
+  932  clang++ --target=wasm32 sample.cpp -o sample_test.o
+  933  man em++
+  934  em++ --help
+  935  clang++ --target=wasm32 sample.cpp
+  936  clang++ --target=wasm32 sample.cpp
+  937  ls
+  938  mkdir test
+  939  cd test
+  940  em+ -std=c++20 ../engine_test.cpp -o test.wasm
+  941  em++ -std=c++20 ../engine_test.cpp -o test.wasm
+  942  em++ -std=c++20 --no-entry ../engine_test.cpp -o test.wasm
+  943  ls
+  944  file test.wasm
+  945  em++ -std=c++20 --prebuilt --no-entry ../engine_test.cpp -o test.wasm
+  946  em++ -std=c++20 --precompile --no-entry ../engine_test.cpp -o test.wasm
+  947  em++ -std=c++20 --precompile --no-entry --target=wasm32 ../engine_test.cpp -o test.wasm
+  948  em++ -std=c++20 --precompile --no-entry ../engine_test.cpp -o test.wasm
+  949  em++ -std=c++20 --no-entry ../engine_test.cpp -o test.wasm
+  950  em++ -std=c++20 --precompile --no-entry --target=wasm32-unknown-emscripten ../engine_test.cpp -o test.wasm
+  951  ls
+  952  clang++ --target=wasm32 -emit-llvm -c -S -o engine.ll ../engine_test.cpp\nllc -march=wasm32 -filetype=obj -o engine.o engine.ll\nwasm-ld --no-entry --export-all -o engine.wasm engine.o\n
+  953  clang++ -std=c++20 --target=wasm32 -emit-llvm -c -S -o engine.ll ../engine_test.cpp\nllc -march=wasm32 -filetype=obj -o engine.o engine.ll\nwasm-ld --no-entry --export-all -o engine.wasm engine.o\n
+  954  clang++ std=c++20 -stdlib=libc++ --target=wasm32 -emit-llvm -c -S -o engine.ll ../engine_test.cpp\nllc -march=wasm32 -filetype=obj -o engine.o engine.ll\nwasm-ld --no-entry --export-all -o engine.wasm engine.o\n
+  955  clang++ -std=c++20 -stdlib=libc++ --target=wasm32 -emit-llvm -c -S -o engine.ll ../engine_test.cpp\nllc -march=wasm32 -filetype=obj -o engine.o engine.ll\nwasm-ld --no-entry --export-all -o engine.wasm engine.o\n
+  956  em++ -std=c++20  --target=wasm32 -emit-llvm -c -S -o engine.ll ../engine_test.cpp\nllc -march=wasm32 -filetype=obj -o engine.o engine.ll\nwasm-ld --no-entry --export-all -o engine.wasm engine.o\n
+  957  ls
+  958  em++ -std=c++20  --target=wasm32 -emit-llvm -c -S -s USE_PTHREADS=1\n-o engine.ll ../engine_test.cpp\nllc -march=wasm32 -filetype=obj -o engine.o engine.ll\nwasm-ld --no-entry --export-all -o engine.wasm engine.o\n
+  959  em++ -std=c++20  --target=wasm32 -emit-llvm -s USE_PTHREADS=1 -c -S -o engine.ll ../engine_test.cpp\nllc -march=wasm32 -filetype=obj -o engine.o engine.ll\nwasm-ld --no-entry --export-all -o engine.wasm engine.o\n
+  960  em++ -std=c++20  --target=wasm32 --bind -Wl,--export-all -Wl,--allow-undefined -s ALLOW_MEMORY_GROWTH=1 -s USE_PTHREADS=1 --no-entry -emit-llvm  -c -S -o engine.ll ../engine_test.cpp\nllc -march=wasm32 -filetype=obj -o engine.o engine.ll\nwasm-ld --no-entry --export-all -o engine.wasm engine.o\n
+  961  rm test.wasm
+  962  emcc ../engine_test.cpp \\n  --bind \\n  --optimize=3 \\n  -Wl,--export-all \\n  -Wl,--allow-undefined \\n  -s ALLOW_MEMORY_GROWTH=1 \\n  --no-entry \\n  -o test.wasm\n
+  963  emcc -std=c++20 ../engine_test.cpp \\n  --bind \\n  --optimize=3 \\n  -Wl,--export-all \\n  -Wl,--allow-undefined \\n  -s ALLOW_MEMORY_GROWTH=1 \\n  --no-entry \\n  -o test.wasm\n
+  964  cd ..
+  965  ls
+  966  ls test
+  967  em++ -std=c++20 -I./imgui -I./imgui/backends -I./test/ -L./test/ -l./test/test.o -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fmodule-file=./test/test.o -fprebuilt-module-path=. -sMAIN_MODULE=2 main.cpp ./test/test.wasm
+  968  em++ -std=c++20 -I./imgui -I./imgui/backends -I./test/ -L./test/ -l./test/test.wasm -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fmodule-file=./test/test.wasm -fprebuilt-module-path=. -sMAIN_MODULE=2 main.cpp ./test/test.wasm
+  969  em++ -std=c++20 -sMAIN_MODULE main.cpp test/test.wasm
+  970  em++ -std=c++20 -I./imgui -I./imgui/backends -I./test/ -L./test/ -l./test/test.wasm -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -sMAIN_MODULE=2 main.cpp ./test/test.wasm
+  971  em++ -std=c++20 -I./imgui -I./imgui/backends -I./test/ -L./test/ -l./test/test.wasm -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fprebuilt-module-path=./test/ -sMAIN_MODULE=2 main.cpp ./test/test.wasm
+  972  em++ -std=c++20 -I./imgui -I./imgui/backends -I./test/ -L./test/ -l./test/test.wasm -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1  -sMAIN_MODULE=2 -fprebuilt-module-path=./test/ main.cpp ./test/test.wasm
+  973  em++ -std=c++20 -I./imgui -I./imgui/backends -I./test/ -L./test/ -l./test/test.wasm -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1  -sMAIN_MODULE -fprebuilt-module-path=./test/ main.cpp ./test/test.wasm
+  974  em++ -std=c++20  --target=wasm32 --bind -Wl,--export-all -Wl,--allow-undefined -I./test/ -s ALLOW_MEMORY_GROWTH=1 -s USE_PTHREADS=1 --no-entry -emit-llvm  -c -S -o main.ll main.cpp\nllc -march=wasm32 -filetype=obj -o main.o main.ll\nwasm-ld --no-entry --export-all -o main.wasm main.o\n
+  975  em++ -std=c++20  --target=wasm32 --bind -Wl,--export-all -Wl,--allow-undefined -I./test/ -I./imgui -I./imgui/backends -s ALLOW_MEMORY_GROWTH=1 -s USE_PTHREADS=1 --no-entry -emit-llvm  -c -S -o main.ll main.cpp\nllc -march=wasm32 -filetype=obj -o main.o main.ll\nwasm-ld --no-entry --export-all -o main.wasm main.o\n
+  976  ls
+  977  emcc -std=c++20 -I./test/ -I./imgui -I./imgui/backends  main.cpp \\n  --bind \\n  --optimize=3 \\n  -Wl,--export-all \\n  -Wl,--allow-undefined \\n  -s ALLOW_MEMORY_GROWTH=1 \\n  --no-entry \\n  -o main.wasm\n
+  978  em++ -std=c++20 -I./imgui -I./imgui/backends -I./test/ -L./test/ -l./test/test.wasm -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fmodule-file=./test/test.wasm -fprebuilt-module-path=. -sMAIN_MODULE=2 main.cpp ./test/test.wasm\n
+  979  emcc -std=c++20 -I./test/ -I./imgui -I./imgui/backends  main.cpp \\n  --bind \\n  --optimize=3 \\n  -Wl,--export-all \\n  -Wl,--allow-undefined \\n  -s ALLOW_MEMORY_GROWTH=1 \\n  --no-entry \\n  -o main.wasm\n
+  980  emcc -std=c++20 -I./test/ -I./imgui -I./imgui/backends -L./test/  main.cpp \\n  --bind \\n  --optimize=3 \\n  -Wl,--export-all \\n  -Wl,--allow-undefined \\n  -s ALLOW_MEMORY_GROWTH=1 \\n  --no-entry \\n  -o main.wasm\n
+  981  emcc -std=c++20 -I./test/ -I./imgui -I./imgui/backends -L./test/ -l./test/test.wasm  main.cpp \\n  --bind \\n  --optimize=3 \\n  -Wl,--export-all \\n  -Wl,--allow-undefined \\n  -s ALLOW_MEMORY_GROWTH=1 \\n  --no-entry \\n  -o main.wasm\n
+  982  ls
+  983  ls test
+  984  emcc -std=c++20  -I./imgui -I./imgui/backends engine.cpp  main.cpp \\n  --bind \\n  --optimize=3 \\n  -Wl,--export-all \\n  -Wl,--allow-undefined \\n  -s ALLOW_MEMORY_GROWTH=1 \\n  --no-entry \\n  -o main.wasm\n
+  985  emcc -std=c++20  -I./imgui -I./imgui/backends engine.cpp  main.cpp \\n  --bind \\n  --optimize=3 \\n  -Wl,--export-all \\n  -Wl,--allow-undefined \\n  -s ALLOW_MEMORY_GROWTH=1 \\n  -o main.wasm\n
+  986  emcc -std=c++20  -I./imgui -I./imgui/backends  main.cpp \\n  --bind \\n  --optimize=3 \\n  -Wl,--export-all \\n  -Wl,--allow-undefined \\n  -s ALLOW_MEMORY_GROWTH=1 \\n  -c -o main.wasm\n
+  987  emcc -std=c++20 main.cpp -c -o main.o\n
+  988  cd test
+  989  clang++ -std=c++20 -x c++-module ./../engine.cpp --precompile -o test.pcm\n 
+  990  clang++ -std=c++20 -x c++-module ./../engine.cpp --precompile -c -o test.pcm\n 
+  991  clang++ --precompile -std=c++20 -x c++-module ./../engine.cpp  -o test.pcm\n 
+  992  clang++ --precompile -std=c++20 -x c++-module ./../hiii.cpp  -o hiii.pcm\n 
+  993  clang++ --precompile -std=c++20 -x c++-module hiii.cpp  -o hiii.pcm\n 
+  994  clang++ -std=c++20 -x c++-module hiii.cpp  -o hiii.pcm\n 
+  995  clang++ -std=c++20  hiii.cpp  -o hiii.pcm\n 
+  996  clang++ hiii.cpp -o hiii
+  997  clang++ hiii.cpp -o hiii
+  998  clang++ hiii.cpp -o hiii
+  999  clang++ --version
+ 1000  brew doctor
+ 1001  cd test
+ 1002  clang++ -std=c++20 -x c++-module ./../engine.cpp --precompile -c -o test.pcm
+ 1003  clang++ --version
+ 1004  clang++ -std=c++20 -L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/llvm/lib -I/opt/homebrew/opt/llvm/include -x c++-module ./../engine.cpp --precompile -c -o test.pcm
+ 1005  clang++ -std=c++20  -I/opt/homebrew/opt/llvm/include -x c++-module ./../engine.cpp -L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/llvm/lib --precompile -c -o test.pcm\n
+ 1006  clang++ -std=c++20 ./../engine.cpp
+ 1007  clang++ -std=c++2a ./../engine.cpp
+ 1008  clang++ -std=c++20 ./../engine.cpp -L/opt/homebrew/opt/llvm/lib/c++  -L/opt/homebrew/opt/llvm/lib -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++ --precompile -o test.pcm\n
+ 1009  /opt/homebrew/opt/llvm/bin/clang++ --version
+ 1010  clang++ -std=c++20 ./../engine.cpp -o ttteesst
+ 1011  /opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ -std=c++20 ./../engine.cpp -o ttteesst
+ 1012  /opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ -std=c++20 ./../engine.cpp --no-entry -o ttteesst
+ 1013  /opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ -std=c++20 ./../engine.cpp -Wl,--no-entry -o ttteesst
+ 1014  /opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ -std=c++20 -x c++-module ./../engine.cpp --precompile -Wl,--no-entry -o ttteesst
+ 1015  ls
+ 1016  /opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ -std=c++20 -x c++-module ./../engine.cpp --precompile -Wl,--no-entry -o test.pcm
+ 1017  /opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ -std=c++20 -x c++-module ./../engine.cpp --precompile -o test.pcm
+ 1018  ls
+ 1019  file test.wasm
+ 1020  file test.pcm
+ 1021  cd ..
+ 1022  emcc -std=c++20 -I./imgui -I./imgui/backends -I./test/ main.cpp -c -o main.o\n
+ 1023  cd test
+ 1024  ls
+ 1025  cd ..
+ 1026  emcc -std=c++20 -I./imgui -I./imgui/backends -I./test/  -fprebuilt-module-path=./test/ main.cpp -c -o main.o\n
+ 1027  cp test/test.pcm .
+ 1028  cp test/test.wasm .
+ 1029  ls
+ 1030  emcc -std=c++20 -I./imgui -I./imgui/backends -fprebuilt-module-path=. main.cpp -c -o main.o\n
+ 1031  cp main.cpp other_main.cpp
+ 1032  cp engine_test.cpp test.cpp
+ 1033  emcc -std=c++20 -I./imgui -I./imgui/backends -fprebuilt-module-path=. main.cpp -c -o main.o\n
+ 1034  emcc -std=c++20 -I./imgui -I./imgui/backends -fprebuilt-module-path=. other_main.cpp -c -o other_main.o\n
+ 1035  ls
+ 1036  /opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ -std=c++20 -x c++-module engine.cpp --precompile --target=wasm32-unknown-emscripten -o test.pcm
+ 1037  em++ -std=c++20 -x c++-module engine.cpp --precompile -o test.pcm
+ 1038  ls
+ 1039  emcc -std=c++20 test.cpp \\n  --bind \\n  --optimize=3 \\n  -Wl,--export-all \\n  -Wl,--allow-undefined \\n  -s ALLOW_MEMORY_GROWTH=1 \\n  --no-entry \\n  -o test.wasm\n
+ 1040  emcc -std=c++20 -I./imgui -I./imgui/backends -fprebuilt-module-path=. other_main.cpp -c -o other_main.o\n
+ 1041  emcc -std=c++20 test.cpp \\n  --bind \\n  --optimize=3 \\n  -Wl,--export-all \\n  -Wl,--allow-undefined \\n  -s ALLOW_MEMORY_GROWTH=1 \\n  --no-entry \\n  --precompiled\\n  -o test.pcm\n
+ 1042  emcc -std=c++20 test.cpp \\n  --bind \\n  --optimize=3 \\n  -Wl,--export-all \\n  -Wl,--allow-undefined \\n  -s ALLOW_MEMORY_GROWTH=1 \\n  --no-entry \\n  --precompile\\n  -o test.pcm\n
+ 1043  em++ -std=c++20  --target=wasm32 --bind -Wl,--export-all -Wl,--allow-undefined -s ALLOW_MEMORY_GROWTH=1 -s USE_PTHREADS=1 --no-entry -emit-llvm  -c -S -o test.ll test.cpp\nllc -march=wasm32 -filetype=obj -o test.o test.ll\nwasm-ld --no-entry --export-all -o test.wasm test.o\n
+ 1044  em++ -std=c++20 -x c++-modules --precompile --target=wasm32 --bind -Wl,--export-all -Wl,--allow-undefined -s ALLOW_MEMORY_GROWTH=1 -s USE_PTHREADS=1 --no-entry -emit-llvm  -c -S -o test.pcm test.cpp\n
+ 1045  cp test.cpp test.cppm
+ 1046  em++ -std=c++20 -x c++-module test.cppm --precompile -o test.pcm\n
+ 1047  ls -la
+ 1048  ls
+ 1049  /opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ -std=c++20 -x c++-module test.cppm --precompile --target=wasm32-unknown-emscripten -o test.pcm\n
+ 1050  /opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ -std=c++20 -x c++-module test.cppm --precompile --target=wasm32-unknown-emscripten --bind -Wl,--export-all -Wl,--allow-undefined -s ALLOW_MEMORY_GROWTH=1 -s USE_PTHREADS=1 --no-entry -o test.pcm\n
+ 1051  ls
+ 1052  em++ -std=c++20 -x c++-modules test.cppm --precompile --target=wasm32-unknown-emscripten --bind -Wl,--export-all -Wl,--allow-undefined -s ALLOW_MEMORY_GROWTH=1 -s USE_PTHREADS=1 --no-entry -emit-llvm  -c -S -o test.pcm \n
+ 1053  ls
+ 1054  ls web
+ 1055  ls
+ 1056  make -f test.makefile
+ 1057  make -f test.makefile
+ 1058  ls
+ 1059  emcc -std=c++20 test.cpp \\n  --bind \\n  --optimize=3 \\n  -Wl,--export-all \\n  -Wl,--allow-undefined \\n  -s ALLOW_MEMORY_GROWTH=1 \\n  --no-entry \\n  --precompile\\n  -o test.pcm\n
+ 1060  em++ -std=c++20 -x c++-modules test.cppm --precompile --target=wasm32-unknown-emscripten --bind -Wl,--export-all -Wl,--allow-undefined -s ALLOW_MEMORY_GROWTH=1 -s USE_PTHREADS=1 --no-entry -emit-llvm  -c -S -o test.pcm\n
+ 1061  /opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ -std=c++20 -x c++-module test.cppm --precompile --target=wasm32-unknown-emscripten -Wl,--export-all -Wl,--allow-undefined -o test.pcm\n
+ 1062  em++ -std=c++20 -x c++-module test.cppm --precompile -o test.pcm\n
+ 1063  em++ -std=c++20 -x c++-modules --precompile --target=wasm32 --bind -Wl,--export-all -Wl,--allow-undefined -s ALLOW_MEMORY_GROWTH=1 -s USE_PTHREADS=1 --no-entry -emit-llvm  -c -S -o test.pcm test.cpp\n
+ 1064  /opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ -std=c++20 -x c++-module ./../engine.cpp --precompile -o test.pcm
+ 1065  /opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ -std=c++20 -x c++-module test.cppm --precompile -o test.pcm
+ 1066  make -f test.makefile
+ 1067  /opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ -std=c++20 -x c++-module test.cppm --precompile -o test.pcm -emit-module-interface
+ 1068  /opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ -std=c++20 -x c++-module test.cppm -emit-module-interface --precompile -o test.pcm 
+ 1069  make -f test.makefile
+ 1070  make -f test.makefile
+ 1071  em++ -std=c++20 -x c++-module test.cppm -emit-module-interface --precompile -o test.pcm 
+ 1072  em++ -std=c++20 -x c++-module test.cppm -emit-module-interface  -o test.pcm 
+ 1073  make -f test.makefile
+ 1074  make -f test.makefile
+ 1075  make -f test.makefile
+ 1076  make -f test.makefile
+ 1077  em++ -std=c++20 -x c++-module test.cppm -emit-module-interface --precompile --target=wasm32-unkown-emscripten -o test.pcm 
+ 1078  em++ -std=c++20 -x c++-module test.cppm -emit-module-interface --target=wasm32-unkown-emscripten -o test.pcm 
+ 1079  make -f test.makefile
+ 1080  em++ -std=c++20 -x c++-module test.cppm --bind --optimize=3 -Wl,--export-all -Wl,--allow-undefined --target=wasm32-unkown-emscripten -o test.pcm 
+ 1081  make -f test.makefile
+ 1082  em++ -std=c++20 -x c++-module test.cppm --bind --optimize=3 -Wl,--export-all -Wl,--allow-undefined --target=wasm32-unkown-emscripten --precompiled -o test.pcm 
+ 1083  em++ -std=c++20 -x c++-module test.cppm --bind --optimize=3 -Wl,--export-all -Wl,--allow-undefined --target=wasm32-unkown-emscripten -c -o test.o 
+ 1084  em++ -std=c++20 -x c++-module test.cppm --bind --optimize=3 -Wl,--export-all -Wl,--allow-undefined --target=wasm32-unkown-emscripten -o test.pcm 
+ 1085  em++ -std=c++20 -x c++-module test.cppm --bind --optimize=3 -Wl,--export-all -Wl,--allow-undefined --target=wasm32-unkown-emscripten -c -o test.o 
+ 1086  em++ -std=c++20 other_main.cpp --bind --optimize=3 -Wl,--export-all -Wl,--allow-undefined --target=wasm32-unkown-emscripten -c -o other_main.o 
+ 1087  em++ -std=c++20 other_main.cpp --bind --optimize=3 -Wl,--export-all -Wl,--allow-undefined -I./imgui/ -I./imgui/backends/ --target=wasm32-unkown-emscripten -c -o other_main.o 
+ 1088  em++ -std=c++20 other_main.cpp --bind --optimize=3 -Wl,--export-all -Wl,--allow-undefined -I./imgui/ -I./imgui/backends/ -Itest -ltest --target=wasm32-unkown-emscripten -c -o other_main.o 
+ 1089  em++ other_main.cpp test.cppm 
+ 1090  em++ other_main.cpp test.cppm -I./imgui/
+ 1091  em++ other_main.cpp test.cppm -I./imgui/ -I./imgui/backends/
+ 1092  em++ other_main.cpp test.cppm -I./imgui/ -I./imgui/backends/ -std=c++20
+ 1093  em++ other_main.cpp test.cppm -I./imgui/ -I./imgui/backends/ -std=c++20 -x c++-modules
+ 1094  em++ other_main.cpp test.cppm -I./imgui/ -I./imgui/backends/ -std=c++20 -x c++-module
+ 1095  em++ other_main.cpp test.cppm -I./imgui/ -I./imgui/backends/ -std=c++20 -x c++-module -fmodule-path=.
+ 1096  em++ other_main.cpp test.cppm -I./imgui/ -I./imgui/backends/ -std=c++20 -x c++-module -fprebuilt-module-path=.
+ 1097  file test.pcm
+ 1098  /opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ --target=wasm32-unknown-emscripten -x c++-modules test.cpp -o test.pcm_real
+ 1099  /opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ -std=c++20 -x c++-module ./../engine.cpp --precompile -o test.pcm_real
+ 1100  /opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ -std=c++20 -x c++-module test.cpp --precompile -o test.pcm_real\n
+ 1101  em++ other_main.cpp test.cppm -I./imgui/ -I./imgui/backends/ -std=c++20 -x c++-module -fmodule-file=test.pcm_real
+ 1102  file test.pcm_real
+ 1103  em++ -std=c++20 -x c++-module test.cpp --precompile -o test.pcm_real\n
+ 1104  em++ --version
+ 1105  em++ -std=c++20 -fmodules test.cpp -o test.pcm_real2\n
+ 1106  em++ other_main.cpp test.cppm -I./imgui/ -I./imgui/backends/ -std=c++20 -x c++-module -fmodule-file=test.pcm_real2
+ 1107  em++ other_main.cpp test.cppm -I./imgui/ -I./imgui/backends/ -std=c++20 -fmodule-file=test.pcm_real2
+ 1108  file test.pcm_real2
+ 1109  em++ other_main.cpp test.cppm -I./imgui/ -I./imgui/backends/ -std=c++20 -x c++-module -fmodules -fmodule-file=test.pcm_real
+ 1110  em++ -std=c++20 -fmodules --precompile test.cpp -o test.pcm_real2\n
+ 1111  em++ -std=c++20 -c -Xclang -emit-module-interface test.cpp -o test.pcm
+ 1112  em++ -I./imgui/ -I./imgui/backends/ -std=c++20 -x c++-module -fmodules -c -fmodule-file=test.pcm other_main.cpp -o other_main.o
+ 1113  em++ -I./imgui/ -I./imgui/backends/ -std=c++20 -x c++-module -fmodules -c -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fmodule-file=test.pcm other_main.cpp -o other_main.o
+ 1114  make -f test.makefile
+ 1115  make -f test.makefile serve
+ 1116  make -f test.makefile
+ 1117  make -f test.makefile clean
+ 1118  make -f test.makefile
+ 1119  em++ -std=c++20 -c -Xclang -emit-module-interface test.cpp -o test.pcm
+ 1120  make -f test.makefile
+ 1121  em++ -std=c++20 -x c++-module test.cppm --bind --optimize=3 -Wl,--export-all -Wl,--allow-undefined --target=wasm32-unkown-emscripten -c -o test.o 
+ 1122  make -f test.makefile
+ 1123  ls -la
+ 1124  em++ -I./imgui/ -I./imgui/backends/ -std=c++20 -x c++-module -fmodules -c -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fmodule-file=test.pcm other_main.cpp -o other_main.o
+ 1125  history > historyclli.txt 

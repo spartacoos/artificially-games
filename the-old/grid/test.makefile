@@ -1,0 +1,141 @@
+# // it got rid of : rm -rf other_main.o imgui.o imgui_draw.o imgui_tables.o
+#                           imgui_widgets.o imgui_demo.o imgui_impl_sdl.o
+#                           imgui_impl_opengl3.o test.o web
+# Running `make` will produce three files:
+#  - web/index.html
+#  - web/index.js
+#  - web/index.wasm
+# All three are needed to run the demo.
+
+CC = emcc
+CXX = em++ -std=c++20 #-MJ compile_commands.json
+WEB_DIR = web
+EXE = $(WEB_DIR)/index.html
+IMGUI_DIR = ./imgui
+SOURCES = other_main.cpp
+SOURCES += $(IMGUI_DIR)/imgui.cpp $(IMGUI_DIR)/imgui_draw.cpp $(IMGUI_DIR)/imgui_tables.cpp $(IMGUI_DIR)/imgui_widgets.cpp $(IMGUI_DIR)/imgui_demo.cpp
+SOURCES += $(IMGUI_DIR)/backends/imgui_impl_sdl.cpp $(IMGUI_DIR)/backends/imgui_impl_opengl3.cpp
+SOURCES += ./test.cpp
+OBJS = $(addsuffix .o, $(basename $(notdir $(SOURCES))))
+UNAME_S := $(shell uname -s)
+CPPFLAGS =
+LDFLAGS =
+EMS =
+
+##---------------------------------------------------------------------
+## EMSCRIPTEN OPTIONS
+##---------------------------------------------------------------------
+
+# ("EMS" options gets added to both CPPFLAGS and LDFLAGS, whereas some options are for linker only)
+#
+#-------------------------THIS DOESN'T WORK---------------------------------------
+# EMS += -s USE_SDL=2
+# EMS += -s DISABLE_EXCEPTION_CATCHING=1  -fprebuilt-module-path=. #-fmodule-file=test.pcm
+# LDFLAGS += -s WASM=1 -s ALLOW_MEMORY_GROWTH=1 -s NO_EXIT_RUNTIME=0 -s ASSERTIONS=1 -sLLD_REPORT_UNDEFINED
+# ------------------------------------------------------------------------------------
+
+
+
+
+
+
+# EMS += -s USE_SDL=2 -s USE_WEBGL2=1 -sFORCE_FILESYSTEM -sLLD_REPORT_UNDEFINED
+# EMS += -s DISABLE_EXCEPTION_CATCHING=1  -fprebuilt-module-path=. --preload-file "Park Tech CG.ttf"  #-fmodule-file=test.pcm
+# LDFLAGS += -s WASM=1 -s ALLOW_MEMORY_GROWTH=1 -s NO_EXIT_RUNTIME=0 -s ASSERTIONS=1 -sLLD_REPORT_UNDEFINED
+
+
+
+
+
+
+#--------------------the block above works if we just add "-s USE_WEBGL2=1" --> but WHY?
+EMS += -s USE_SDL=2 -s USE_WEBGL2=1
+EMS += -s DISABLE_EXCEPTION_CATCHING=1 -fprebuilt-module-path=. #-fmodule-file=test.pcm #-fprebuilt-module-path=.
+
+
+# EMS += -I./../ENGINE/web/ -L./../ENGINE/web/ -l./../ENGINE/web/engine.wasm
+
+
+
+
+# CXXFLAGS = -fprebuilt-module-path=../ENGINE/
+# CXXFLAGS +=  ./../ENGINE/engine.pcm
+# CXXFLAGS = -fmodule-file=./../ENGINE/web/engine.wasm
+LDFLAGS += -s WASM=1 -s ALLOW_MEMORY_GROWTH=1 -s NO_EXIT_RUNTIME=0 -s ASSERTIONS=1 -sLLD_REPORT_UNDEFINED
+#----------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+#-------------------------------------this block works fine (albeit with lots of -Wunused warnings, same as block above due to WEBGL2 flag)
+# EMS = -s USE_SDL=2 -s USE_WEBGL2=1 -s WASM=1 -s FULL_ES3=1
+# EMS += -s ALLOW_MEMORY_GROWTH=1 #-s BINARYEN_TRAP_MODE=clamp
+# EMS += -s DISABLE_EXCEPTION_CATCHING=1 -s EXIT_RUNTIME=1
+# EMS += -s ASSERTIONS=1 -s SAFE_HEAP=1
+# --------------------------------------------------------------------------------
+
+
+# Uncomment next line to fix possible rendering bugs with Emscripten version older then 1.39.0 (https://github.com/ocornut/imgui/issues/2877)
+#EMS += -s BINARYEN_TRAP_MODE=clamp
+#EMS += -s SAFE_HEAP=1    ## Adds overhead
+
+# Emscripten allows preloading a file or folder to be accessible at runtime.
+# The Makefile for this example project suggests embedding the misc/fonts/ folder into our application, it will then be accessible as "/fonts"
+# See documentation for more details: https://emscripten.org/docs/porting/files/packaging_files.html
+# (Default value is 0. Set to 1 to enable file-system and include the misc/fonts/ folder as part of the build.)
+USE_FILE_SYSTEM ?= 0
+ifeq ($(USE_FILE_SYSTEM), 0)
+LDFLAGS += -s NO_FILESYSTEM=1
+CPPFLAGS += -DIMGUI_DISABLE_FILE_FUNCTIONS
+endif
+ifeq ($(USE_FILE_SYSTEM), 1)
+LDFLAGS += --no-heap-copy --preload-file ../../misc/fonts@/fonts
+endif
+
+##---------------------------------------------------------------------
+## FINAL BUILD FLAGS
+##---------------------------------------------------------------------
+
+CPPFLAGS += -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends -Wl,-fmodule-file=test.pcm  #-I./test/ -L./test/ -l./test/test.wasm #-I./../ENGINE/web/ -L./../ENGINE/web/ -l./../ENGINE/web/engine.wasm
+#CPPFLAGS += -g
+CPPFLAGS += -Wall -Wformat  -Os $(EMS)
+LDFLAGS +=  --shell-file shell_minimal.html $(EMS)
+
+##---------------------------------------------------------------------
+## BUILD RULES
+##---------------------------------------------------------------------
+
+%.o:%.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@  $<
+# $(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<
+
+%.o:$(IMGUI_DIR)/%.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<
+
+%.o:$(IMGUI_DIR)/backends/%.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<
+
+all: $(EXE)
+	@echo Build complete for $(EXE)
+
+$(WEB_DIR):
+	mkdir $@
+
+serve: all
+	python3 -m http.server -d $(WEB_DIR)
+
+$(EXE): $(OBJS) $(WEB_DIR)
+	$(CXX) -o $@ $(OBJS) $(LDFLAGS)
+
+clean:
+	rm -rf $(OBJS) $(WEB_DIR)
+
+engine:./../ENGINE/engine.cppm
+	em++ -std=c++20 -sLLD_REPORT_UNDEFINED --no-entry ./../ENGINE/engine.cpp -o ./../ENGINE/web/engine.wasm
+#em++ -std=c++20 -x c++-module ./../ENGINE/engine.cppm --precompile -o ./../ENGINE/web/engine.wasm

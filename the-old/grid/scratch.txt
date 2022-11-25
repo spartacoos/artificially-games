@@ -1,0 +1,200 @@
+clang++ -std=c++20 -stdlib=libc++ --target=wasm32 -emit-llvm -c -S -o engine.ll ../engine_test.cpp
+llc -march=wasm32 -filetype=obj -o engine.o engine.ll
+wasm-ld --no-entry --export-all -o engine.wasm engine.o
+
+
+em++ -std=c++20  --target=wasm32 --bind -Wl,--export-all -Wl,--allow-undefined -s ALLOW_MEMORY_GROWTH=1 -s USE_PTHREADS=1 --no-entry -emit-llvm  -c -S -o engine.ll ../engine_test.cpp
+llc -march=wasm32 -filetype=obj -o engine.o engine.ll
+wasm-ld --no-entry --export-all -o engine.wasm engine.o
+
+
+
+em++ -std=c++20  --target=wasm32 --bind -Wl,--export-all -Wl,--allow-undefined -s ALLOW_MEMORY_GROWTH=1 -s USE_PTHREADS=1 --no-entry -emit-llvm  -c -S -o test.ll test.cpp
+llc -march=wasm32 -filetype=obj -o test.o test.ll
+wasm-ld --no-entry --export-all -o test.wasm test.o
+
+
+em++ -std=c++20 -x c++-modules --precompile --target=wasm32 --bind -Wl,--export-all -Wl,--allow-undefined -s ALLOW_MEMORY_GROWTH=1 -s USE_PTHREADS=1 --no-entry -emit-llvm  -c -S -o test.pcm test.cpp
+em++ -std=c++20 -x c++-module test.cppm --precompile -o test.pcm
+/opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ -std=c++20 -x c++-module test.cppm --precompile --target=wasm32-unknown-emscripten -Wl,--export-all -Wl,--allow-undefined -o test.pcm
+
+
+em++ -std=c++20 -x c++-modules test.cppm --precompile --target=wasm32-unknown-emscripten --bind -Wl,--export-all -Wl,--allow-undefined -s ALLOW_MEMORY_GROWTH=1 -s USE_PTHREADS=1 --no-entry -emit-llvm  -c -S -o test.pcm
+
+llc -march=wasm32 -filetype=obj -o test.o test.ll
+wasm-ld --no-entry --export-all -o test.wasm test.o
+
+THIS WORKS FOR GETTING AN EMSCRIPTTEDNY ENGINE
+emcc -std=c++20 ../engine_test.cpp \
+  --bind \
+  --optimize=3 \
+  -Wl,--export-all \
+  -Wl,--allow-undefined \
+  -s ALLOW_MEMORY_GROWTH=1 \
+  --no-entry \
+  -o test.wasm
+
+
+
+emcc -std=c++20 test.cpp \
+  --bind \
+  --optimize=3 \
+  -Wl,--export-all \
+  -Wl,--allow-undefined \
+  -s ALLOW_MEMORY_GROWTH=1 \
+  --no-entry \
+  -o test.wasm
+
+
+emcc -std=c++20 test.cpp \
+  --bind \
+  --optimize=3 \
+  -Wl,--export-all \
+  -Wl,--allow-undefined \
+  -s ALLOW_MEMORY_GROWTH=1 \
+  --no-entry \
+  --precompile\
+  -o test.pcm
+
+
+em++ -std=c++20 -I./imgui -I./imgui/backends -I./test/ -L./test/ -l./test/test.wasm -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fmodule-file=./test/test.wasm -fprebuilt-module-path=. -sMAIN_MODULE=2 main.cpp ./test/test.wasm
+
+
+
+em++ -std=c++20  --target=wasm32 --bind -Wl,--export-all -Wl,--allow-undefined -I./test/ -I./imgui -I./imgui/backends -s ALLOW_MEMORY_GROWTH=1 -s USE_PTHREADS=1 --no-entry -emit-llvm  -c -S -o main.ll main.cpp
+llc -march=wasm32 -filetype=obj -o main.o main.ll
+wasm-ld --no-entry --export-all -o main.wasm main.o
+
+
+
+
+
+
+
+emcc -std=c++20 -I./test/ -I./imgui -I./imgui/backends  main.cpp \
+  --bind \
+  --optimize=3 \
+  -Wl,--export-all \
+  -Wl,--allow-undefined \
+  -s ALLOW_MEMORY_GROWTH=1 \
+  --no-entry \
+  -o main.wasm
+
+
+
+
+
+
+emscripten can't find precompiled C++20 modules
+1. try to build the whole thing in one commands without precompiling the engine to wasm
+2. try linking the engine properly
+
+
+emcc -std=c++20 --shell-file=shell_minimal.html -I./test/ -I./imgui -I./imgui/backends -L./test/ -l./test/test.wasm test.cppm other_main.cpp \
+  --bind \
+  --optimize=3 \
+  -Wl,--export-all \
+  -Wl,--allow-undefined \
+  -s ALLOW_MEMORY_GROWTH=1 \
+  --no-entry \
+  -o main.wasm
+
+
+emcc -std=c++20 -I./test/ -I./imgui -I./imgui/backends -L./test/ -l./test/test.wasm  main.cpp \
+  --bind \
+  --optimize=3 \
+  -Wl,--export-all \
+  -Wl,--allow-undefined \
+  -s ALLOW_MEMORY_GROWTH=1 \
+  --no-entry \
+  -o main.wasm
+
+
+
+
+
+
+emcc -std=c++20  -I./imgui -I./imgui/backends engine.cpp  main.cpp \
+  --bind \
+  --optimize=3 \
+  -Wl,--export-all \
+  -Wl,--allow-undefined \
+  -s ALLOW_MEMORY_GROWTH=1 \
+  -o main.wasm
+
+emcc -std=c++20  -I./imgui -I./imgui/backends  main.cpp \
+  --bind \
+  --optimize=3 \
+  -Wl,--export-all \
+  -Wl,--allow-undefined \
+  -s ALLOW_MEMORY_GROWTH=1 \
+  -c -o main.wasm
+
+
+emcc -std=c++20 -I./imgui -I./imgui/backends -I./test/ main.cpp -c -o main.o
+
+-std=c++20 -x c++-module ./../engine.cpp --precompile -o test.pcm
+
+
+
+3. CURRENT idea -> program complains about there not being a engine.pcm during compilation (don't actually need the pcm) but I can compile it anyways to make this error go away, finish the
+compilation (without linking) and then during linking just do something like:
+em++ engine.o main.o -sSINGLEWHATEVER -o main.wasm
+
+
+clang++ -std=c++20  -I/opt/homebrew/opt/llvm/include -x c++-module ./../engine.cpp -L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/llvm/lib --precompile -c -o test.pcm
+
+
+
+clang++ -std=c++20 ./../engine.cpp -L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/llvm/lib --precompile -c -o test.pcm
+clang++ -std=c++20 ./../engine.cpp -L/opt/homebrew/opt/llvm/lib/c++  -L/opt/homebrew/opt/llvm/lib -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++ --precompile -o test.pcm
+
+
+
+
+THIS WORKS FOR GIVING ME THE PLAIN PCM
+❯ /opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ -std=c++20 -x c++-module ./../engine.cpp --precompile -o test.pcm
+/opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ -std=c++20 -x c++-module ./../engine.cpp --precompile -o test.pcm
+
+
+
+
+/opt/homebrew/Cellar/llvm/15.0.5/bin/clang++ -std=c++20 -x c++-module test.cpp --precompile -o test.pcm_real
+
+
+
+
+
+
+
+
+
+
+
+// IT BUILDDDDDSSS
+//until make clean broke it.... sad:
+// it got rid of : rm -rf other_main.o imgui.o imgui_draw.o imgui_tables.o imgui_widgets.o imgui_demo.o imgui_impl_sdl.o imgui_impl_opengl3.o test.o web
+
+❯ em++ -std=c++20 -c -Xclang -emit-module-interface test.cpp -o test.pcm
+❯ em++ -I./imgui/ -I./imgui/backends/ -std=c++20 -x c++-module -fmodules -c -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fmodule-file=test.pcm other_main.cpp -o other_main.o
+
+//Plausible (i.e these cmds ran without errors doesn't necessarily mean they produced
+// the missing other_main.o or test.o)
+❯ em++ -std=c++20 -fmodules test.cpp -o test.pcm_real2
+
+//Q: how did I build the last working test.o???
+
+
+/P1:
+❯ em++ -std=c++20  --target=wasm32 --bind -Wl,--export-all -Wl,--allow-undefined -s ALLOW_MEMORY_GROWTH=1 -s USE_PTHREADS=1 --no-entry -emit-llvm  -c -S -o test.ll test.cpp
+llc -march=wasm32 -filetype=obj -o test.o test.ll
+wasm-ld --no-entry --export-all -o test.wasm test.o
+
+/P2:
+❯ em++ -std=c++20 -x c++-module test.cppm --bind --optimize=3 -Wl,--export-all -Wl,--allow-undefined --target=wasm32-unkown-emscripten -c -o test.o
+
+
+/P3:
+em++ -std=c++20 -x c++-module test.cppm --bind --optimize=3 -Wl,--export-all -Wl,--allow-undefined --target=wasm32-unkown-emscripten -c -o test.o
+
+/p4:

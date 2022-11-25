@@ -1,0 +1,16 @@
+ 1109  em++ other_main.cpp test.cppm -I./imgui/ -I./imgui/backends/ -std=c++20 -x c++-module -fmodules -fmodule-file=test.pcm_real
+ 1110  em++ -std=c++20 -fmodules --precompile test.cpp -o test.pcm_real2\n
+ 1111  em++ -std=c++20 -c -Xclang -emit-module-interface test.cpp -o test.pcm
+ 1112  em++ -I./imgui/ -I./imgui/backends/ -std=c++20 -x c++-module -fmodules -c -fmodule-file=test.pcm other_main.cpp -o other_main.o
+ 1113  em++ -I./imgui/ -I./imgui/backends/ -std=c++20 -x c++-module -fmodules -c -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fmodule-file=test.pcm other_main.cpp -o other_main.o
+ 1114  make -f test.makefile
+ 1115  make -f test.makefile serve
+ 1116  make -f test.makefile
+ 1117  make -f test.makefile clean
+ 1118  make -f test.makefile
+ 1119  em++ -std=c++20 -c -Xclang -emit-module-interface test.cpp -o test.pcm
+ 1120  make -f test.makefile
+ 1121  em++ -std=c++20 -x c++-module test.cppm --bind --optimize=3 -Wl,--export-all -Wl,--allow-undefined --target=wasm32-unkown-emscripten -c -o test.o 
+ 1122  make -f test.makefile
+ 1123  ls -la
+ 1124  em++ -I./imgui/ -I./imgui/backends/ -std=c++20 -x c++-module -fmodules -c -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=1 -fmodule-file=test.pcm other_main.cpp -o other_main.o

@@ -13,7 +13,7 @@
 # All three are needed to run the demo.
 
 CC = emcc
-CXX = em++ -MJ compile_commands.json
+CXX = em++ -std=c++20 -MJ compile_commands.json
 WEB_DIR = web
 EXE = $(WEB_DIR)/index.html
 IMGUI_DIR = ./imgui
@@ -22,7 +22,7 @@ SOURCES += $(IMGUI_DIR)/imgui.cpp $(IMGUI_DIR)/imgui_draw.cpp $(IMGUI_DIR)/imgui
 SOURCES += $(IMGUI_DIR)/backends/imgui_impl_sdl.cpp $(IMGUI_DIR)/backends/imgui_impl_opengl3.cpp
 OBJS = $(addsuffix .o, $(basename $(notdir $(SOURCES))))
 UNAME_S := $(shell uname -s)
-CPPFLAGS = -std=c++20 -fprebuilt-module-path=../ENGINE/
+CPPFLAGS =
 LDFLAGS =
 EMS =
 
@@ -52,6 +52,16 @@ EMS =
 #--------------------the block above works if we just add "-s USE_WEBGL2=1" --> but WHY?
 EMS += -s USE_SDL=2 -s USE_WEBGL2=1
 EMS += -s DISABLE_EXCEPTION_CATCHING=1
+
+
+# EMS += -I./../ENGINE/web/ -L./../ENGINE/web/ -l./../ENGINE/web/engine.wasm
+
+
+
+
+# CXXFLAGS = -fprebuilt-module-path=../ENGINE/
+# CXXFLAGS +=  ./../ENGINE/engine.pcm
+# CXXFLAGS = -fmodule-file=./../ENGINE/web/engine.wasm
 LDFLAGS += -s WASM=1 -s ALLOW_MEMORY_GROWTH=1 -s NO_EXIT_RUNTIME=0 -s ASSERTIONS=1 -sLLD_REPORT_UNDEFINED
 #----------------------------------------------------------------------------------------
 
@@ -93,17 +103,18 @@ endif
 ## FINAL BUILD FLAGS
 ##---------------------------------------------------------------------
 
-CPPFLAGS += -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends
+CPPFLAGS += -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends -I./test/ -L./test/ -l./test/test.wasm #-I./../ENGINE/web/ -L./../ENGINE/web/ -l./../ENGINE/web/engine.wasm
 #CPPFLAGS += -g
 CPPFLAGS += -Wall -Wformat  -Os $(EMS)
-LDFLAGS += --shell-file shell_minimal.html $(EMS)
+LDFLAGS +=  --shell-file shell_minimal.html $(EMS)
 
 ##---------------------------------------------------------------------
 ## BUILD RULES
 ##---------------------------------------------------------------------
 
 %.o:%.cpp
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@  $<
+# $(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<
 
 %.o:$(IMGUI_DIR)/%.cpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<
@@ -125,3 +136,7 @@ $(EXE): $(OBJS) $(WEB_DIR)
 
 clean:
 	rm -rf $(OBJS) $(WEB_DIR)
+
+engine:./../ENGINE/engine.cppm
+	em++ -std=c++20 -sLLD_REPORT_UNDEFINED --no-entry ./../ENGINE/engine.cpp -o ./../ENGINE/web/engine.wasm
+#em++ -std=c++20 -x c++-module ./../ENGINE/engine.cppm --precompile -o ./../ENGINE/web/engine.wasm
